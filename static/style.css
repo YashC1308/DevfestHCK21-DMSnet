@@ -417,3 +417,7 @@ td {
   padding-left: 7px;
   padding-right: 7px;
 }
+
+div.dashboard td a {
+  color: black;
+}
