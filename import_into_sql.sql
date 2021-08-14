@@ -44,30 +44,6 @@ LOCK TABLES `contract` WRITE;
 INSERT INTO `contract` VALUES (1,36,42,'10 timber','30 rps',0,0,'2021-08-13'),(2,36,56,'10 stone','400 rps',0,0,'2021-08-13'),(3,56,42,'40 gld','30 rps',0,0,'2021-08-13'),(4,36,47,'40 towels','400 rps',0,0,'2021-08-13');
 /*!40000 ALTER TABLE `contract` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `profile`
---
-
-DROP TABLE IF EXISTS `profile`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `profile` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `About` varchar(1000) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profile`
---
-
-LOCK TABLES `profile` WRITE;
-/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'Hi I make artwork'),(2,'I do crocketry'),(3,'I paid for 1000 characters and i will use 1000 characters'),(4,'Hi I make artwork'),(5,'Hi I make artwork'),(6,'Hi I make artwork');
-/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -78,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-15  1:04:37
+-- Dump completed on 2021-08-13 15:46:06

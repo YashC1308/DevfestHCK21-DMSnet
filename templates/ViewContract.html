@@ -8,7 +8,7 @@
 
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='style1.css') }}"
     />
   </head>
   <style>
@@ -30,16 +30,17 @@ body{
 
   </style>
   <body class = "">
-        <header>
-            <h2 class ="logo">DMS-Net</h2>
-            <ul class="nav_links">
-                <li><a href="#" title="">Dashboard</a></li>
-                <li><a href="CreateContract1.html" title="">Place Order</a></li>
-                <li><a href="#" title="">Search</a></li>
-                <li><a href="#" title="">Chat</a></li>
-                <li><a href="#" title="">My Profile</a></li>
-            </ul>
-        </header>
+  <nav class = "transparent ">
+    <div class="nav-wrapper">
+    <a href="#" class="brand-logo "><h6> DMS-Net</h6></a>
+    <a href="#" class="brand-logo center"><b>Dashboard</b></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/listings" class = "btn waves-effect  glass ">Search</a></li>
+        <li><a href="/logout" class = "btn waves-effect glass">Logout</a></li>
+        <li><a href="/user_profile" class = "btn waves-effect glass ">Edit  Profile</a></li>
+      </ul>
+    </div>
+  </nav>
   <br>
   </br>
 

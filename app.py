@@ -51,12 +51,10 @@ def index():
 
     print('-------------------------------------------------')
 
-
     return render_template('Index.html')
 
 
 @app.route('/CreateContract', methods=['GET', 'POST'])
-
 def CreateContract():
     msg = 'Please Fill up the Form'
     array = ['ID1', 'ID2', 'ID3', 'ID4']
