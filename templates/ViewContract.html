@@ -8,34 +8,56 @@
 
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      href="{{ url_for('static', filename='style1.css') }}"
     />
   </head>
-  <body class = "blue-grey lighten-5">
-  <nav class = "teal lighten-2">
+  <style>
+body{
+  background-image: url("{{ url_for('static', filename='BGVID.mp4') }}");
+}
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid white blur(10px);
+  backdrop-filter: blur(50px);
+  background-clip: border-box;
+  box-shadow: 10px 10px 10px rgba(45, 55, 68, 0.3);
+  
+}
+.rco{
+  border: 2px;
+  border-radius:8px;
+}
+
+  </style>
+  <body class = "">
+  <nav class = "transparent ">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Dashboard</a>
+    <a href="#" class="brand-logo "><h6> DMS-Net</h6></a>
+    <a href="#" class="brand-logo center"><b>Dashboard</b></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" class = "btn waves-effect teal">Home</a></li>
-        <li><a href="/logout" class = "btn waves-effect teal">Logout</a></li>
+        <li><a href="/listings" class = "btn waves-effect  glass ">Search</a></li>
+        <li><a href="/logout" class = "btn waves-effect glass">Logout</a></li>
+        <li><a href="/user_profile" class = "btn waves-effect glass ">Edit  Profile</a></li>
       </ul>
     </div>
   </nav>
   <br>
-  </br> 
-  <div class = "z-depth-1 container blue-grey lighten-5" >
+  </br>
+
+  <div class = "z-depth-2 container   grey lighten-4 centered striped rco" >
     <table >
       <thead>
-        <tr>
+        <tr class = "">
           <th>Contract started by</th>
-          <th>Manifacturer</th>
+          <th>Manufacturer</th>
           <th>Date</th>
           <th>Accepted</th>
           <th>Contract link</th>
         </tr>
       </thead>
 
-      <tbody class = "data_entry">
+      <tbody class = "data_entry ">
+
                         {% for (k,v,z,y,w) in data %}
                         <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
                         <td>{{ k }}</td>
