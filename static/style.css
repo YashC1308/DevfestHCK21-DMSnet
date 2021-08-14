@@ -179,7 +179,6 @@ div.container {
   border-radius: 10px;
 }
 div.container-cards {
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -366,4 +365,59 @@ div.container-view div.image-view img {
 .container-view {
   position: relative;
   z-index: 10;
+}
+/******************************************************************************/
+div.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.678);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+div.sidebar div.spacer {
+  margin-top: 100px;
+}
+div.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+div.sidebar a:hover {
+  color: rgb(255, 201, 14);
+}
+
+div.dashboard {
+  position: absolute;
+  margin-left: 5%;
+  top: 22%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.795);
+  padding: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-shadow: 0 50px 50px -px rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+div.dashboard tr,
+th,
+td {
+  justify-content: space-between;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+div.dashboard td a {
+  color: black;
 }
