@@ -79,13 +79,8 @@ def CreateContract():
 @app.route('/ViewContract', methods=['GET', 'POST'])
 def ViewContract():
     msg = ''
-<<<<<<< Updated upstream
-    if True :
-        party1_Id = 36
-=======
     if request.method == 'POST' and 'party1_Id' in request.form:
         party1_Id = request.form['party1_Id']
->>>>>>> Stashed changes
 
         cursor.execute("SELECT party1_Id,party2_Id,date FROM contract WHERE party1_id={} or party2_Id={};".format(
             party1_Id, party1_Id))
@@ -110,11 +105,6 @@ def ViewContract():
             temp.append(Contract_Id[i][0])
 
             data.append(temp)
-<<<<<<< Updated upstream
-        print('11111')
-=======
-
->>>>>>> Stashed changes
         print(data)
 
         return render_template('ViewContract.html', data=data, msg=msg)
