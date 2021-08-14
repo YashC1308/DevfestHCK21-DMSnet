@@ -42,29 +42,21 @@ def Make_Contract(party1_Id,party2_Id,party1_pledge,party2_pledge):
     cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',0,0,'{}');".format(party1_Id,party2_Id,party1_pledge,party2_pledge,Date))
     cnx.commit()
 
-@app.route('/AcceptContract', methods =['GET', 'POST'])
-def AcceptContract(party_Id,Contract_Id):
-    if request.method == 'POST':
-        if request.form.get('approve'):
-            print(done)
-'''
-    return render_template('ContractDeets.html', data = data)
-    cursor.execute("SELECT party1_id,party2_id FROM contract WHERE id = {};".format(Contract_Id))
-
-
-    data = cursor.fetchall()[0]
-
-    if data[0] == party_Id:
-        cursor.execute("UPDATE contract set party1_accepted = 1 where id = {};".format(Contract_Id))
-    else:
-        cursor.execute("UPDATE contract set party2_accepted = 1 where id = {};".format(Contract_Id))
-    cnx.commit()
-'''
+@app.route('/')
+@app.route('/index', methods =['GET', 'POST'])
 
 
 
-#Make_Contract(1,2,'1 Stone','23 gold coins')
-#AcceptContract(1,1)
+
+
+def index():
+
+        
+    print('-------------------------------------------------')
+            
+    return render_template('Index.html')
+
+
 
 
 @app.route('/CreateContract', methods =['GET', 'POST'])

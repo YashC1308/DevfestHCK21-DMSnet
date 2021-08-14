@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order</title>
-    <link rel='stylesheet' href="style.css" >
+    <link rel='stylesheet'href="{{ url_for('static', filename='style.css') }}" >
 </head>
 <body>
     <section class="showcase">
-        <header>
-            <h2 class ="logo">DMS-Net</h2>
+        <header><a  href='{{ url_for('index') }}'>
+            <h2 class ="logo">DMS-Net</h2></a>
             <ul class="nav_links">
                 <li><a href="#" title="">Dashboard</a></li>
                 <li><a href="CreateContract1.html" title="">Place Order</a></li>
@@ -20,11 +20,11 @@
             </ul>
         </header>
         <div class="overlay"></div>
-        <video src="production ID_4440813.mp4" muted loop autoplay></video>
+        <video src={{ url_for('static', filename='BGVID.mp4') }} muted loop autoplay></video>
     <div class="container-order">
         <div class='myform-order'>
             <form>
-                <h2>Place an Order</h2>
+                <h2>Place an Order {{ url_for('index') }}</h2>
                 <input type='text' placeholder="Your ID">
                 <input type='text' placeholder="Merchant ID">
                 <input type='text' placeholder="Your Order">
@@ -35,7 +35,7 @@
             </form>
         </div>
         <div class="image-order">
-            <img src="Login into a world of ease.gif" width=400px">
+            <img src={{ url_for('static', filename='Login.gif') }} width=400px">
         </div>
     </div>
     </section>

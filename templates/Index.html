@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>DMS-Net</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
         <header>
             <h2 class ="logo">DMS-Net</h2>
             <ul class="nav_links">
-                <li><a href="index.html" title="">Home</a></li>
+                <li><a href="{{ url_for('index') }}" title="">Home</a></li>
                 <li><a href="login1.html" title="">Login</a></li>
                 <li><a href="sign_up1.html" title="">Create Account</a></li>
                 <li><a href="#" title="">About</a></li>
@@ -21,7 +21,7 @@
             </ul>
         </header>
         <div class="overlay"></div>
-        <video src="production ID_4440813.mp4" muted loop autoplay></video>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="text">
             <h2>Hello.</h2>
             <h3>We are DMS-Net</h3>
