@@ -13,7 +13,7 @@
   </head>
   <style>
 body{
-  background-image: url("{{ url_for('static', filename='BGVID.mp4') }}");
+  background-image: url("{{ url_for('static', filename='BG.jpeg') }}");
 }
 .glass {
   background: rgba(255, 255, 255, 0.1);
@@ -27,8 +27,12 @@ body{
   border: 2px;
   border-radius:8px;
 }
+.card-small {
+     width:300px;
+    }
 
   </style>
+
   <body class = "">
         <header>
             <h2 class ="logo">DMS-Net</h2>
@@ -42,33 +46,45 @@ body{
         </header>
   <br>
   </br>
+  <br></br>
 
-  <div class = "z-depth-2 container   grey lighten-4 centered striped rco" >
-    <table >
-      <thead>
-        <tr class = "">
-          <th>Contract started by</th>
-          <th>Manufacturer</th>
-          <th>Date</th>
-          <th>Accepted</th>
-          <th>Contract link</th>
-        </tr>
-      </thead>
 
-      <tbody class = "data_entry ">
 
-                        {% for (k,v,z,y,w) in data %}
-                        <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
-                        <td>{{ k }}</td>
-                        <td>{{ v }}</td>
-                        <td>{{ z }}</td>
-                        <td>{{ y }}</td>
-                        <td><a href = 'contract/{{w}}'>OPEN LINK</a></td>
-                        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    </div>
+ <div >
+      <div class="col s3 m6 l6">
+              <div class="card card-small">
+                        
+ {% for card in data %} 
+
+<div class="container-cards">
+<div class="card-image">
+          <img src="C:/Users/SoI/Desktop/DMS-Net/website/static/factory.png">
+          <span class="card-title">Factory name</span>
+        </div>
+        <div class="card-content">
+          <p>card</p>
+        </div>
+        <div class="card-action">
+          <a href="#">chat</a>
+          <a href="#">meh</a>
+          </div>
+</div>
+          <br>
+          <br>
+
+
+
+
+
+
+
+<br>
+{% endfor %}
+        
+        </div>
+        </div>
+      </div>
+
   </body>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

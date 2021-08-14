@@ -57,8 +57,13 @@ def index():
     return render_template('Index.html')
 
 
-
-
+@app.route('/listing', methods =['GET', 'POST'])
+def listing():
+    cursor.execute('select * from profile;')
+    data = cursor.fetchall()
+    
+    return render_template('listing.html',data = data)
+  
 @app.route('/CreateContract', methods =['GET', 'POST'])
 def CreateContract():
     msg = 'Please Fill up the Form'
