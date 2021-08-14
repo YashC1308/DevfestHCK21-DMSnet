@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body class="viewstyle" >
+
+      <section class="searchfind" >
+          <div class="container-fluid">
+              <div class="row align-items-center justify-content-center">
+                    
+                     <center>                      
+                    </center>
+                    <center>
+                      <form action="" class="statesearch" id= 'form1' action="{{ url_for('ViewContract') }}" method="POST">
+                        <label for="party1_ID">Your ID:</label><br>
+
+                        <input type="text" id="party1_Id" name="party1_Id" ><br> 
+ 
+                      <br>
+                      <br>
+                      <button type="submit" form="form1" class= "btn btn-secondary" statesearchbtn>Search</button>
+                      <br><br>
+                      </form>
+                    </center>
+                  </div>
+                  <div class="row align-items-center justify-content-center">
+                    <center>
+                      <table >
+                        <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
+                          <th style="color: rgb(34, 34, 34);">Who started Contract</th>
+                          <th style="color: rgb(34, 34, 34);">With whom they started</th>
+                          <th style="color: rgb(34, 34, 34);">Date</th>
+                          <th style="color: rgb(34, 34, 34);">Accepted by both parties</th>
+                          <th style="color: rgb(34, 34, 34);">Open Contract</th>
+                        </tr>
+                        {% for (k,v,z,y,w) in data %}
+                        <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                        <td>{{ z }}</td>
+                        <td>{{ y }}</td>
+                        <td><a href = 'contract/{{w}}'>OPEN LINK</a></td>
+                        </tr>
+        {% endfor %}
+                      </table>
+                    </center>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+</body>
+</html>

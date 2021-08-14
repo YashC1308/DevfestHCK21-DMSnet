@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Forms</h2>
+
+<form action="{{ url_for('CreateContract') }}" method="POST" id='form1'>
+
+  <label for="party1_ID">Your ID:</label><br>
+
+  <input type="text" id="party1_Id" name="party1_Id" ><br>
+
+  <label for="party2_ID">ID of the second Party:</label><br>
+
+  <input type="text" id="party2_Id" name="party2_Id" ><br><br>
+
+  <label for="party1_pledge">Your Pledge:</label><br>
+
+  <input type="text" id="party1_pledge" name="party1_pledge" ><br><br>
+
+  <label for="party2_pledge">The Other Party's pledge:</label><br>
+
+  <input type="text" id="party2_pledge" name="party2_pledge" ><br><br>
+
+  <input type="submit" value="Submit">
+</form> 
+
+
+
+</body>
+</html>
