@@ -36,14 +36,15 @@
       </thead>
 
       <tbody class = "data_entry">
-        <tr>
-          <td>chocolate</td>
-          <td>nestle</td>
-          <td>02/02/2021</td>
-          <td>accepted</td>
-          <td>link</td>
-        </tr>
-
+                        {% for (k,v,z,y,w) in data %}
+                        <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                        <td>{{ z }}</td>
+                        <td>{{ y }}</td>
+                        <td><a href = 'contract/{{w}}'>OPEN LINK</a></td>
+                        </tr>
+        {% endfor %}
       </tbody>
     </table>
     </div>
