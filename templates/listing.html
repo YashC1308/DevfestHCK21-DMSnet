@@ -39,23 +39,25 @@
             <div class="spacer"></div>
             <ul >
                 <li><h4>Hello, {{type}}</h4></li>
-                <li><a href = '/CreateContract/" "'>Place Order</a></li>
+                <li><a href = "#">Place Order</a></li>
                 <li><a href="{{url_for('listing') }}">Search</a></li>
                 <li><a href="#">Chat</a></li>
             </ul>
         </div>
         <div class="grid-container">
- {% for profile in data %} 
+        {%  pictures = ['Profile_pic1.jpg','Profile_pic2.jpg','Profile_pic2.jpg','Profile_pic3.jpg','Profile_pic4.jpg','Profile_pic5.jpg','Profile_pic6.jpg']   %}]
+
+        {% for profile in data %} 
          <div class="cardy">
-      <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image" />
+      <img src="{{ url_for('static', filename='Profile_pic1.jpg') }}" alt="" class="image" />
       <div class="content">
-        <h4>{{profile[1]}}</h4>
-        <h5>{{profile[2]}}</h5>
+        <h4>{{data[i][1]}}</h4>
+        <h5>{{data[i][2]}}</h5>
         <p>
-          {{profile[3]}} 
+          {{data[i][3]}} 
         </p>
         <div class="link">
-        <div class="btny"><a href = '/CreateContract/{{profile[0]}}'>Order</a></div>
+        <div class="btny"><a href = '/CreateContract/{{data[i][0]}}'>Order</a></div>
           <div class="btny"><a href="">CHAT</a></div>
         </div>
         
