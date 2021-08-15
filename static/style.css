@@ -255,8 +255,8 @@ div.container {
   padding: 30px;
   box-shadow: 0 50px 50px -px rgb(0, 0, 0);
   border-radius: 10px;
-  padding-bottom: 90px;
-  margin-right: 0;
+  padding-bottom: 50px;
+  padding-right: 50px;
 }
 div.container-cards {
   top: 50%;
@@ -287,7 +287,7 @@ div.container div.myform input {
   width: 100%;
   border-bottom: 2px solid #1c1c1e;
   margin-bottom: 25px;
-  padding: 7px 0;
+  padding: 10px 0;
 }
 div.container div.myform button {
   color: white;
@@ -304,9 +304,8 @@ div.container div.image {
   box-sizing: border-box;
 }
 div.container div.image img {
-  display: inline-flex;
-  margin-left: 10px;
   border-radius: 10px;
+  margin-left: 10px;
 }
 
 .container {
@@ -389,7 +388,8 @@ div.container-sign div.myform-sign h2 {
   color: #000000;
   margin-bottom: 20px;
 }
-div.container-sign div.myform-sign input {
+div.container-sign div.myform-sign input,
+select {
   border: none;
   outline: none;
   border-radius: 0;
