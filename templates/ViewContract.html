@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <style>
+body{
+  background-image: url("{{ url_for('static', filename='BGVID.mp4') }}");
+}
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid white blur(10px);
+  backdrop-filter: blur(50px);
+  background-clip: border-box;
+  box-shadow: 10px 10px 10px rgba(45, 55, 68, 0.3);
+  
+}
+.rco{
+  border: 2px;
+  border-radius:8px;
+}
+
+  </style>
+  <body class = "">
+        <header>
+            <h2 class ="logo">DMS-Net</h2>
+            <ul class="nav_links">
+                <li><a href="#" title="">Dashboard</a></li>
+                <li><a href="{{ url_for('CreateContract') }}" title="">Place Order</a></li>
+                <li><a href="#" title="">Search</a></li>
+                <li><a href="#" title="">Chat</a></li>
+                <li><a href="#" title="">My Profile</a></li>
+            </ul>
+        </header>
+  <br>
+  </br>
+
+  <div class = "z-depth-2 container   grey lighten-4 centered striped rco" >
+    <table >
+      <thead>
+        <tr class = "">
+          <th>Contract started by</th>
+          <th>Manufacturer</th>
+          <th>Date</th>
+          <th>Accepted</th>
+          <th>Contract link</th>
+        </tr>
+      </thead>
+
+      <tbody class = "data_entry ">
+
+                        {% for (k,v,z,y,w) in data %}
+                        <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                        <td>{{ z }}</td>
+                        <td>{{ y }}</td>
+                        <td><a href = 'contract/{{w}}'>OPEN LINK</a></td>
+                        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </body>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>
