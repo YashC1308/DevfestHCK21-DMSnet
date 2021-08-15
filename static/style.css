@@ -559,7 +559,7 @@ div.sidebar a:hover {
 
 div.dashboard {
   position: absolute;
-  margin-left: 5%;
+  margin-left: 10%;
   top: 22%;
   left: 40%;
   transform: translate(-50%, -50%);
