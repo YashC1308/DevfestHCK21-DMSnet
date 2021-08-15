@@ -21,14 +21,11 @@
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="sidebar">
             <div class="spacer"></div>
-            <ul>
-<<<<<<< HEAD
-                <li><a href="{{ url_for('CreateContract') }}">Place Order</a></li>
-                <li><a href="#">Search</a></li>
-=======
+            <ul >
+                <li><h3>Type of Account:{{type}}</h3></li>
+
                 <li><a href="{{url_for('CreateContract') }}">Place Order</a></li>
                 <li><a href="{{url_for('listing') }}">Search</a></li>
->>>>>>> main
                 <li><a href="#">Chat</a></li>
             </ul>
         </div>
