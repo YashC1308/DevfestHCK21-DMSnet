@@ -146,7 +146,7 @@ def index():
 def listing():
     if user.LoggedIn:
         cursor.execute('select * from profiles;')
-        data = cursor.fetchall()
+        data1 = cursor.fetchall()
         cursor.execute(
             'select type_of_art from profiles group by type_of_art;')
         options = cursor.fetchall()
@@ -154,8 +154,18 @@ def listing():
             print(request.form)
             cursor.execute(
                 "select * from profiles where type_of_art ='{}';".format(request.form['type']))
-            data = cursor.fetchall()
-            print(data)
+            data1 = cursor.fetchall()
+         
+        pictures = ['Profile_pic1.jpg','Profile_pic2.jpg','Profile_pic3.jpg','Profile_pic4.jpg','Profile_pic5.jpg','Profile_pic6.jpg']
+        data = []
+        for i in data1:
+            data.append(list(i))
+        for i in range(len(data)):
+            j = i
+            if i > 5:
+                j-=5
+
+            data[i].append(pictures[j])
         return render_template('listing.html', data=data, options=options)
     else:
         return render_template('login.html', msg='Login to your account')
@@ -211,7 +221,7 @@ def ContractDeet(Contract_Id):
 
 
 
-    return render_template('ContractDeets.html', data = data)
+    return render_template('ContractDeets.html', data = data,type=user.Type)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -264,12 +274,8 @@ def logout():
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if user.LoggedIn:
-        cursor.execute('select * from profiles;')
-        data = cursor.fetchall()
-        cursor.execute(
-            'select type_of_art from profiles group by type_of_art;')
-        options = cursor.fetchall()
-        return render_template('profile.html', profile=data, options=options)
+
+        return render_template('profile.html', profile=data, options=options,type= user.Type)
     else:
         return render_template('login.html', msg='Login here')
 
@@ -280,18 +286,18 @@ def sign_up():
     msg = 'Please Fill up the Form'
     print(request.form)
 
-    if request.method == 'POST' and 'password' in request.form and 'username' in request.form and 'email' in request.form and (request.form['type'] == 'creator' or request.form['type'] == 'customer'):
+    if request.method == 'POST' and 'password' in request.form and 'username' in request.form and 'email' in request.form and (request.form['type'] == 'Creator' or request.form['type'] == 'Customer'):
 
         password = request.form['password']
         username = request.form['username']
         password2 = request.form['password2']
         Type = request.form['type']
         if password2 == password:
-            cursor.execute("insert into login values(NULL,'{}','{}','{}')".format(
-                username, password, Type))
+            cursor.execute("insert into login values(NULL,'{}','{}','{}')".format(username, password, Type))
             cnx.commit()
             msg = "Sign up success"
             return render_template('login.html', msg=msg)
+
         else:
             msg = 'Please make sure both the passwords match'
 

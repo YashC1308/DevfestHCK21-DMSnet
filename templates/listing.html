@@ -48,7 +48,7 @@
  {% for profile in data %} 
  
          <div class="cardy">
-      <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image" />
+      <img src="{{ url_for('static', filename=profile[-1]) }}" alt="" class="image" />
       <div class="content">
         <h4>{{profile[1]}}</h4>
         <h5>{{profile[2]}}</h5>
