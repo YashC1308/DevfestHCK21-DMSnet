@@ -1,7 +1,7 @@
 class User:
     def __init__(self):
         self.LoggedIn = False
-        print(1)
+        self.Contract_Id = ''
 
     def Login(self,Id,Type,password):
         self.LoggedIn = True
