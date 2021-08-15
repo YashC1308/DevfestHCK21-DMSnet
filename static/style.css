@@ -36,6 +36,14 @@ header .logo {
   width: 50%;
   z-index: 4;
 }
+.search-grid {
+  display: grid;
+  grid-template-rows: 50px auto;
+
+  row-gap: 1px;
+  column-gap: 1px;
+  z-index: 4;
+}
 .conty {
   border: 2px solid #dedede00;
   background-color: #f1f1f1;
@@ -119,7 +127,7 @@ header .logo {
   margin-top: 40px;
   align-content: center;
   grid-template-columns: auto auto auto;
-  background-color: #ffffff7e;
+  background-color: #ffffff00;
   column-gap: 80px;
   row-gap: 50px;
   height: auto;
@@ -144,6 +152,8 @@ a {
   font-size: 16px;
 }
 .search {
+  margin-left: 20%;
+  margin-bottom: 80%;
   z-index: 5;
 }
 .search form {

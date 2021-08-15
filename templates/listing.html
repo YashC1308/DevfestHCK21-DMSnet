@@ -22,24 +22,6 @@
           <li><a href="{{url_for('logout') }}" title="">Logout</a></li>
         </ul>
       </header>
-      <div class="search">
-        <form action="{{ url_for('listing') }}" method="POST" id="form1">
-          <span
-            ><select
-              name="type"
-              aria-label="Type of Account"
-              placeholder="Search for artist"
-            >
-              <option value="placeholder" selected>Search here</option>
-              {% for i in options %}
-              <option value="{{i[0]}}">{{i[0]}}</option>
-
-              {% endfor %}
-            </select></span
-          >
-          <span><button type="submit">search</button></span>
-        </form>
-      </div>
       <div class="overlay"></div>
       <video
         src="{{ url_for('static', filename='BGVID.mp4') }}"
@@ -56,27 +38,50 @@
           <li><a href="#">Chat</a></li>
         </ul>
       </div>
-      <div class="grid-container">
-        {% for profile in data %}
-        <div class="cardy">
-          <img
-            src="{{ url_for('static', filename=profile[-1]) }}"
-            alt=""
-            class="image"
-          />
-          <div class="content">
-            <h4>{{profile[1]}}</h4>
-            <h5>{{profile[2]}}</h5>
-            <p>{{profile[3]}}</p>
-            <div class="link">
-              <div class="btny">
-                <a href="/CreateContract/{{profile[0]}}">Order</a>
+      <div class="search-grid">
+        <div class="search">
+          <form action="{{ url_for('listing') }}" method="POST" id="form1">
+            <span
+              ><select
+                name="type"
+                aria-label="Type of Account"
+                placeholder="Search for artist"
+              >
+                <option value="placeholder" selected>Search here</option>
+                {% for i in options %}
+                <option value="{{i[0]}}">{{i[0]}}</option>
+
+                {% endfor %}
+              </select></span
+            >
+            <span><button type="submit">search</button></span>
+          </form>
+        </div>
+
+        <div class="grid-container">
+          {% for profile in data %}
+          <div class="cardy">
+            <img
+              src="{{ url_for('static', filename=profile[-1]) }}"
+              alt=""
+              class="image"
+            />
+            <div class="content">
+              <h4>{{profile[1]}}</h4>
+              <h5>{{profile[2]}}</h5>
+              <p>{{profile[3]}}</p>
+              <div class="link">
+                <div class="btny">
+                  <a href="/CreateContract/{{profile[0]}}">Order</a>
+                </div>
+                <div class="btny"><a href="{{url_for('chat') }}">Chat</a></div>
               </div>
-              <div class="btny"><a href="{{url_for('chat') }}">Chat</a></div>
             </div>
           </div>
+          {%endfor%}
         </div>
-        {%endfor%}
+        </div>
+
         <div class="overlay"></div>
         <video
           src="{{ url_for('static', filename='BGVID.mp4') }}"
