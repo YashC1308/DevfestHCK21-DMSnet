@@ -17,24 +17,26 @@
             <h2 class ="logo">DMS-Net</h2>
 
             <ul class="nav_links">
-                <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
-                <li><a href="#" title="">My Profile</a></li>
-                <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
-                <li>  <form action="{{ url_for('listing') }}" method="POST" id='form1'>
-                <h2> Search for artist</h2>
-                <select  name ='type' aria-label="Type of Account" style="width: 100%;">
-                <option selected>Select</option>
-                {% for i in options %}
-                <option value = "{{i[0]}}">{{i[0]}}</option>
-
-                {% endfor %}
-                </select>
-
-                <button type='submit'>search</button>
-
-            </form></li>
+                <li></li>
+            <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
+            <li><a href="#" title="">My Profile</a></li>
+            <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
             </ul>
         </header>
+        <div class='search'>
+            <form action="{{ url_for('listing') }}" method="POST" id='form1'>
+                <span><select  name ='type' aria-label="Type of Account" placeholder="Search for artist">
+                    <datalist>
+                    {% for i in options %}
+                    <option value = "{{i[0]}}">{{i[0]}}</option>
+
+                    {% endfor %}
+                    </select></span>
+                    </datalist>
+                <span><button type='submit'>search</button></span>
+
+            </form>
+        </div>
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="sidebar">
