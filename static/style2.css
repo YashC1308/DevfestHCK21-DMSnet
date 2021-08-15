@@ -10,7 +10,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 40px 20px;
+  padding: 40px 100px;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -23,86 +23,6 @@ header .logo {
 }
 .nav_links {
   list-style: none;
-}
-.cardy {
-  width: 18rem;
-  background: rgba(255, 255, 255, 0.822);
-  border: 2px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  z-index: 4;
-}
-.edit-cardy {
-  width: 18rem;
-  background: rgba(255, 255, 255, 0.822);
-  border: 2px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  z-index: 5;
-}
-.grid-container-edit {
-  display: grid;
-  margin-left: 5%;
-  margin-top: 0px;
-  align-content: center;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto;
-  background-color: #ffffff00;
-  column-gap: 80px;
-  row-gap: 50px;
-  height: auto;
-  padding: 100px;
-  z-index: 4;
-}
-.form-aes {
-  margin-bottom: 7px;
-  border-top: rgba(255, 255, 255, 0);
-  border-left: rgba(255, 255, 255, 0);
-  border-right: rgba(255, 255, 255, 0);
-  outline: none;
-}
-.link {
-  display: flex;
-  justify-content: space-around;
-  color: #0c0c0cc5;
-}
-.btny {
-  margin-top: 10px;
-  width: 4vw;
-  height: 1.7vw;
-  background: #818181;
-  cursor: pointer;
-  border-radius: 7%;
-  border-color: #818181;
-  opacity: 0.8;
-  font-size: 1rem;
-  box-shadow: inset 0 0 0 0 rgb(255, 201, 14);
-}
-.btny:hover {
-  box-shadow: inset 8vw 0 0 0 rgb(255, 201, 14);
-  color: #000000;
-}
-
-.grid-container {
-  display: grid;
-  margin-left: 10%;
-  margin-top: 40px;
-  align-content: center;
-  grid-template-columns: auto auto auto;
-  background-color: #ffffff7e;
-  column-gap: 80px;
-  row-gap: 50px;
-  height: auto;
-  padding: 100px;
-}
-.image {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-  border-radius: 8px 8px 0px 0px;
-}
-.content {
-  padding: 10px;
 }
 .nav_links li,
 a {
@@ -249,19 +169,17 @@ div.container {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 35%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   background-color: rgb(255, 255, 255);
   padding: 30px;
   box-shadow: 0 50px 50px -px rgb(0, 0, 0);
   border-radius: 10px;
-  padding-bottom: 90px;
-  margin-right: 0;
 }
 div.container-cards {
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -269,10 +187,9 @@ div.container-cards {
   flex-direction: row;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0 50px 50px -px rgb(0, 0, 0);
   border-radius: 10px;
-  margin: 10px;
 }
 div.container div.myform {
   width: 270px;
@@ -301,14 +218,7 @@ div.container div.myform button {
   font-size: 14px;
   padding: 7px 14px;
 }
-div.container div.image {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-div.container div.image img {
-  display: inline-flex;
-  margin-left: 10px;
+div.container div.image image {
   border-radius: 10px;
 }
 
@@ -456,59 +366,4 @@ div.container-view div.image-view img {
 .container-view {
   position: relative;
   z-index: 10;
-}
-/******************************************************************************/
-div.sidebar {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.678);
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-div.sidebar div.spacer {
-  margin-top: 100px;
-}
-div.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-div.sidebar a:hover {
-  color: rgb(255, 201, 14);
-}
-
-div.dashboard {
-  position: absolute;
-  margin-left: 5%;
-  top: 22%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.795);
-  padding: 40px;
-  padding-left: 50px;
-  padding-right: 50px;
-  box-shadow: 0 50px 50px -px rgb(0, 0, 0);
-  border-radius: 10px;
-  padding: 20px;
-}
-
-div.dashboard tr,
-th,
-td {
-  justify-content: space-between;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-div.dashboard td a {
-  color: black;
 }
