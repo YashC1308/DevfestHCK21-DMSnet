@@ -28,7 +28,7 @@
             </ul>
         </div>
         <div class="overlay"></div>
-        <video src={{ url_for('static', filename='BGVID.mp4') }} muted loop autoplay></video>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
     <div class="container-order">
         <div class='myform-order'>
             <form action="{{ url_for('CreateContract') }}" method="POST" id='form1'>
@@ -44,7 +44,7 @@
             </form>
         </div>
         <div class="image-order">
-            <img src={{ url_for('static', filename='Login.gif') }} width=400px">
+            <img src="{{ url_for('static', filename='Login.gif') }}" width=400px>
         </div>
     </div>
     </section>

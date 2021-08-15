@@ -392,7 +392,8 @@ div.container-sign div.myform-sign h2 {
   color: #000000;
   margin-bottom: 20px;
 }
-div.container-sign div.myform-sign input {
+div.container-sign div.myform-sign input,
+select {
   border: none;
   outline: none;
   border-radius: 0;
@@ -477,6 +478,13 @@ div.sidebar a {
   text-decoration: none;
   font-size: 25px;
   color: #818181;
+  display: block;
+}
+div.sidebar li h4 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: rgb(255, 201, 14);
   display: block;
 }
 div.sidebar a:hover {
