@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='15w60ps',
+cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -89,7 +89,8 @@ def index():
 @app.route('/listing', methods=['GET', 'POST'])
 def listing():
     if user.LoggedIn:
-        pictures = ['Profile_pic1.jpg','Profile_pic2.jpg','Profile_pic3.jpg','Profile_pic4.jpg','Profile_pic5.jpg','Profile_pic6.jpg']
+        pictures = ['Profile_pic1.jpg', 'Profile_pic2.jpg', 'Profile_pic3.jpg',
+                    'Profile_pic4.jpg', 'Profile_pic5.jpg', 'Profile_pic6.jpg']
         cursor.execute('select * from profiles;')
         data1 = cursor.fetchall()
         cursor.execute(
@@ -106,7 +107,7 @@ def listing():
         for i in range(len(data)):
             j = i
             while j > 5:
-                j-=5
+                j -= 5
             data[i].append(pictures[j])
 
         return render_template('listing.html', data=data, options=options)
@@ -276,7 +277,7 @@ def msgsdr(name, messages, receiver, sender):
     print("try")
     try:
         try:
-            #query may need edit
+            # query may need edit
             #cursor.execute("select UserId from {} where Name='{}';".format(TBL1_NAME,name))
             print("aaaaa")
         except:
@@ -290,10 +291,12 @@ def msgsdr(name, messages, receiver, sender):
             cnx.commit()
     except:
         print("Oops! An error occured, try again later")
-        
-def recmsg(sender,receiver):
-    cursor.execute("select chat_message,timestamp,from_user_id from chat_message where from_user_id = {} or from_user_id={}  order by timestamp".format(sender,receiver))
-    data=cursor.fetchall()
+
+
+def recmsg(sender, receiver):
+    cursor.execute("select chat_message,timestamp,from_user_id from chat_message where from_user_id = {} or from_user_id={}  order by timestamp".format(
+        sender, receiver))
+    data = cursor.fetchall()
     chat = []
     for i in data:
         tar = ["", ""]
