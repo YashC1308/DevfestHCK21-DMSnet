@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='attendance@123',
+cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -111,7 +111,7 @@ def CreateContract(id):
         if id:
             cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
             values = list(cursor.fetchall()[0])
-            
+
         msg = 'Please Fill up the Form'
         array = ['ID1', 'ID2', 'ID3', 'ID4']
         print(request.form)
@@ -126,7 +126,7 @@ def CreateContract(id):
                 array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
 
                 if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
-                    msg = 'Please fill the form correctly' 
+                    msg = 'Please fill the form correctly'
 
                 else:
                     Make_Contract(party1_Id, party2_Id,
@@ -136,7 +136,7 @@ def CreateContract(id):
             else:
                 msg = 'Please Enter the correct Password'
 
-        return render_template('CreateContract.html', msg=msg, array=array,values=values)
+        return render_template('CreateContract.html', msg=msg, array=array, values=values)
     else:
         return render_template('login.html', msg='Login to your account')
 

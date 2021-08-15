@@ -23,13 +23,12 @@
         <div class='search'>
             <form action="{{ url_for('listing') }}" method="POST" id='form1'>
                 <span><select  name ='type' aria-label="Type of Account" placeholder="Search for artist">
-                    <datalist>
+                    <option value="placeholder" selected>Search here</option>
                     {% for i in options %}
                     <option value = "{{i[0]}}">{{i[0]}}</option>
 
                     {% endfor %}
                     </select></span>
-                    </datalist>
                 <span><button type='submit'>search</button></span>
 
             </form>
@@ -45,7 +44,6 @@
                 <li><a href="#">Chat</a></li>
             </ul>
         </div>
-
         <div class="grid-container">
  {% for profile in data %} 
          <div class="cardy">
