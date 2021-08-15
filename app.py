@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
+cnx = mysql.connector.connect(user='root', password='attendance@123',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -69,70 +69,12 @@ def Load_Dashboard(party1_Id):
     return data
 
 
-@app.route('/AcceptContract', methods=['GET', 'POST'])
-def AcceptContract():
-    print(request.form)
-    cursor.execute(
-        "SELECT * FROM contract WHERE id={};".format(user.contract_Id))
-
-    data = list(cursor.fetchall()[0])
-    if data[5] == 0:
-        data[5] = "No"
-    else:
-        data[5] = "Yes"
-    if data[6] == 0:
-        data[6] = "No"
-    else:
-        data[6] = "Yes"
-    if request.method == 'POST':
-
-        if request.form.get('approve'):
-
-            cursor.execute('UPDATE contract SET party2_accepted = 1 WHERE id = {};'.format(
-                user.contract_Id))
-            cnx.commit()
-            cursor.execute(
-                "SELECT * FROM contract WHERE id={};".format(user.contract_Id))
-
-            data = list(cursor.fetchall()[0])
-            if data[5] == 0:
-                data[5] = "No"
-            else:
-                data[5] = "Yes"
-            if data[6] == 0:
-                data[6] = "No"
-            else:
-                data[6] = "Yes"
-            return render_template('ContractDeets.html', data=data)
-    return render_template('ContractDeets.html', data=data)
-
-
-@app.route('/MakeContract', methods=['GET', 'POST'])
-def MakeContract():
-    values = ['', '', '']
+def Make_Contract(party1_Id, party2_Id, party1_pledge, party2_pledge):
     Date = date.today()
-    if request.method == 'POST' and 'creator_Id' in request.form:
-        print(111)
-        if request.form['password'] == user.password:
-            party1_Id = user.Id
-            party2_Id = request.form['creator_Id']
-            party2_pledge = request.form['order']
-            party1_pledge = request.form['price']
-            array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
 
-            if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
-                msg = 'Please fill the form correctly'
-
-            else:
-                cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(
-                    party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
-                cnx.commit()
-                msg = 'Order Placed succesfully'
-                array = ["", "", "", "", ""]
-        else:
-            msg = 'Please Enter the correct Password'
-
-    return render_template('CreateContract.html', msg=msg, values=["", "", "", "", ""])
+    cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(
+        party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
+    cnx.commit()
 
 
 @app.route('/')
@@ -148,7 +90,7 @@ def index():
 def listing():
     if user.LoggedIn:
         cursor.execute('select * from profiles;')
-        data1 = cursor.fetchall()
+        data = cursor.fetchall()
         cursor.execute(
             'select type_of_art from profiles group by type_of_art;')
         options = cursor.fetchall()
@@ -156,19 +98,8 @@ def listing():
             print(request.form)
             cursor.execute(
                 "select * from profiles where type_of_art ='{}';".format(request.form['type']))
-            data1 = cursor.fetchall()
-
-        pictures = ['Profile_pic1.jpg', 'Profile_pic2.jpg', 'Profile_pic3.jpg',
-                    'Profile_pic4.jpg', 'Profile_pic5.jpg', 'Profile_pic6.jpg']
-        data = []
-        for i in data1:
-            data.append(list(i))
-        for i in range(len(data)):
-            j = i
-            if i > 5:
-                j -= 5
-
-            data[i].append(pictures[j])
+            data = cursor.fetchall()
+            print(data)
         return render_template('listing.html', data=data, options=options)
     else:
         return render_template('login.html', msg='Login to your account')
@@ -176,21 +107,38 @@ def listing():
 
 @app.route('/CreateContract/<id>', methods=['GET', 'POST'])
 def CreateContract(id):
-    values = ['', '', '']
     if user.LoggedIn:
-        try:
-            if id:
-                cursor.execute(
-                    "SELECT * FROM contract WHERE id={};".format(id))
-                values = list(cursor.fetchall()[0])
-        except:
-            values = ['', '', '']
+        if id:
+            cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
+            values = list(cursor.fetchall()[0])
+
         msg = 'Please Fill up the Form'
         array = ['ID1', 'ID2', 'ID3', 'ID4']
-        return render_template('CreateContract.html', values=values)
+        print(request.form)
+        print(request.method)
+        if request.method == 'POST' and 'creator_Id' in request.form:
+            print(111)
+            if request.form['password'] == user.password:
+                party1_Id = user.Id
+                party2_Id = request.form['cdreator_I']
+                party2_pledge = request.form['order']
+                party1_pledge = request.form['price']
+                array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
 
+                if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
+                    msg = 'Please fill the form correctly'
+
+                else:
+                    Make_Contract(party1_Id, party2_Id,
+                                  party1_pledge, party2_pledge)
+                    msg = 'Order Placed succesfully'
+                    array = ["", "", "", "", ""]
+            else:
+                msg = 'Please Enter the correct Password'
+
+        return render_template('CreateContract.html', msg=msg, array=array, values=values)
     else:
-        return render_template('login.html', msg='Login to your account', values=values)
+        return render_template('login.html', msg='Login to your account')
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -209,7 +157,6 @@ def dashboard():
 @app.route("/contract/<Contract_Id>", methods=['GET', 'POST'])
 def ContractDeet(Contract_Id):
     cursor.execute("SELECT * FROM contract WHERE id={};".format(Contract_Id))
-    user.contract_Id = Contract_Id
 
     data = list(cursor.fetchall()[0])
     if data[5] == 0:
@@ -222,7 +169,7 @@ def ContractDeet(Contract_Id):
         data[6] = "Yes"
     print(data)
 
-    return render_template('ContractDeets.html', data=data, type=user.Type)
+    return render_template('ContractDeets.html', data=data)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -275,8 +222,12 @@ def logout():
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if user.LoggedIn:
-
-        return render_template('profile.html', profile=data, options=options, type=user.Type)
+        cursor.execute('select * from profiles;')
+        data = cursor.fetchall()
+        cursor.execute(
+            'select type_of_art from profiles group by type_of_art;')
+        options = cursor.fetchall()
+        return render_template('profile.html', profile=data, options=options)
     else:
         return render_template('login.html', msg='Login here')
 
@@ -287,7 +238,7 @@ def sign_up():
     msg = 'Please Fill up the Form'
     print(request.form)
 
-    if request.method == 'POST' and 'password' in request.form and 'username' in request.form and 'email' in request.form and (request.form['type'] == 'Creator' or request.form['type'] == 'Customer'):
+    if request.method == 'POST' and 'password' in request.form and 'username' in request.form and 'email' in request.form and (request.form['type'] == 'creator' or request.form['type'] == 'customer'):
 
         password = request.form['password']
         username = request.form['username']
@@ -299,7 +250,6 @@ def sign_up():
             cnx.commit()
             msg = "Sign up success"
             return render_template('login.html', msg=msg)
-
         else:
             msg = 'Please make sure both the passwords match'
 
@@ -308,6 +258,60 @@ def sign_up():
 
     return render_template('sign_up.html', msg=msg)
 
+#sidak functions
+def msgsdr(name,messages,receiver,sender):
+    TBL1_NAME="idk2"
+    print("try")
+    try:
+        try:
+            #query may need edit
+            cursor.execute("select UserId from {} where Name='{}';".format(TBL1_NAME,name))
+        except:
+            print("No such user exists")
+        else:
+            data=cursor.fetchone()
+            (Rid,)=data
+            #get message,receiver,sender
+            cursor.execute("INSERT INTO `dims`.`chat_message` (`to_user_id`, `from_user_id`, `chat_message`, `status`) VALUES ({},{},{},'1');".format(receiver,sender,messages))
+            cnx.commit()
+    except:
+        print("Oops! An error occured, try again later")
+def recmsg(sender,receiver):
+    cursor.execute("select chat_message,timestamp,from_user_id from chat_message where from_user_id = {} or from_user_id={}  order by timestamp".format(sender,receiver))
+    data=cursor.fetchall()
+    chat = []
+    for i in data:
+        tar = ["",""]
+        if i[-1]==int(sender):
+            tar[0]=i[0]
+        else:
+            tar[1]=i[0]
+        chat.append(tar)
+    
+    for i in range(len(chat)-2):
+        if chat[i][0] and chat[i][1]=="":
+            chat[i][1]=chat[i+1][1]
+            chat.pop(i+1)
+        if chat[i][1] and chat[i][0]=="":
+            chat[i][0]=chat[i+1][0]
+            chat.pop(i+1)
+        if chat[i][0]=="" and chat[i+1][0]=="":
+            chat[i][1]+= " /n" + chat[i+1][1]
+            chat.pop(i+1)
+        if chat[i][1]=="" and chat[i+1][1]=="":
+            chat[i][0]+= " /n" + chat[i+1][0]
+            chat.pop(i+1)
+    return chat
+
+
+@app.route('/chat', methods=['GET', 'POST'])
+def chat(rid="2"):
+    #get nm from html
+    sender = "1"
+    receiver=rid
+    chat = recmsg(sender,receiver)
+    print(chat)
+    return render_template("chat.html",chat=chat)
 
 if __name__ == "__main__":
     app.run()
