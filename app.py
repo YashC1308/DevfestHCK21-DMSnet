@@ -70,17 +70,17 @@ def Load_Dashboard(party1_Id):
 
 
 @app.route('/MakeContract', methods=['GET', 'POST'])
-
 def MakeContract():
     values = ['', '', '']
     Date = date.today()
     if request.method == 'POST' and 'creator_Id' in request.form:
-        party1_Id, party2_Id, party1_pledge, party2_pledge, = user.Id,request.form["creator_Id"],request.form["price"],request.form["order"]
+        party1_Id, party2_Id, party1_pledge, party2_pledge, = user.Id, request.form[
+            "creator_Id"], request.form["price"], request.form["order"]
 
         msg = 'Please fill the form correctly'
 
-
-        cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
+        cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(
+            party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
         cnx.commit()
         msg = 'Order Placed succesfully'
         array = ["", "", "", "", ""]
@@ -128,15 +128,13 @@ def listing():
         return render_template('login.html', msg='Login to your account')
 
 
-
-
 @app.route('/CreateContract/<id>', methods=['GET', 'POST'])
 def CreateContract(id):
     values = ['', '', '']
     if user.LoggedIn:
         try:
             if id:
-                
+
                 cursor.execute(
                     "SELECT * FROM contract WHERE id={};".format(id))
                 values = list(cursor.fetchall()[0])
