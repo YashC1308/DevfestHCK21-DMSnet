@@ -476,6 +476,14 @@ div.sidebar a {
   color: #818181;
   display: block;
 }
+
+div.sidebar li h4 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: rgb(255, 201, 14);
+  display: block;
+}
 div.sidebar a:hover {
   color: rgb(255, 201, 14);
 }
