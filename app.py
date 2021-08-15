@@ -260,6 +260,7 @@ def sign_up():
 
 #sidak functions
 def msgsdr(name,messages,receiver,sender):
+    uid="idk"
     TBL1_NAME="idk2"
     print("try")
     try:
@@ -271,7 +272,7 @@ def msgsdr(name,messages,receiver,sender):
         else:
             data=cursor.fetchone()
             (Rid,)=data
-            #get message,receiver,sender
+            #query needs edit
             cursor.execute("INSERT INTO `dims`.`chat_message` (`to_user_id`, `from_user_id`, `chat_message`, `status`) VALUES ({},{},{},'1');".format(receiver,sender,messages))
             cnx.commit()
     except:
