@@ -75,7 +75,7 @@ def MakeContract():
     values = ['', '', '']
     Date = date.today()
     if request.method == 'POST' and 'creator_Id' in request.form:
-        print(111)
+        party1_Id, party2_Id, party1_pledge, party2_pledge, = user.Id,request.form["creator_Id"],request.form["price"],request.form["order"]
 
         msg = 'Please fill the form correctly'
 
