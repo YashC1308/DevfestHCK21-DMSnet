@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
+cnx = mysql.connector.connect(user='root', password='15w60ps',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -68,13 +68,69 @@ def Load_Dashboard(party1_Id):
     print(data)
     return data
 
+@app.route('/AcceptContract', methods =['GET', 'POST'])
+def AcceptContract():
+    print(request.form)
+    cursor.execute("SELECT * FROM contract WHERE id={};".format(user.contract_Id))
 
-def Make_Contract(party1_Id, party2_Id, party1_pledge, party2_pledge):
+
+    data = list(cursor.fetchall()[0])
+    if data[5]== 0:
+        data[5] = "No"
+    else:
+        data[5] = "Yes"
+    if data[6]== 0:
+        data[6] = "No"
+    else:
+        data[6] = "Yes"
+    if request.method == 'POST' :
+
+        if request.form.get('approve'):
+
+            cursor.execute('UPDATE contract SET party2_accepted = 1 WHERE id = {};'.format(user.contract_Id))
+            cnx.commit()
+            cursor.execute("SELECT * FROM contract WHERE id={};".format(user.contract_Id))
+
+
+            data = list(cursor.fetchall()[0])
+            if data[5]== 0:
+                data[5] = "No"
+            else:
+                data[5] = "Yes"
+            if data[6]== 0:
+                data[6] = "No"
+            else:
+                data[6] = "Yes"
+            return render_template('ContractDeets.html', data = data)
+    return render_template('ContractDeets.html', data = data)
+
+@app.route('/MakeContract', methods =['GET', 'POST'])
+def MakeContract():
+    values = ['','','']
     Date = date.today()
+    if request.method == 'POST' and 'creator_Id' in request.form:
+        print(111)
+        if request.form['password'] == user.password:
+            party1_Id = user.Id
+            party2_Id = request.form['creator_Id']
+            party2_pledge = request.form['order']
+            party1_pledge = request.form['price']
+            array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
 
-    cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(
-        party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
-    cnx.commit()
+            if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
+                msg = 'Please fill the form correctly'
+
+            else:
+                cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
+                cnx.commit()
+                msg = 'Order Placed succesfully'
+                array = ["", "", "", "", ""]
+        else:
+            msg = 'Please Enter the correct Password'
+
+    return render_template('CreateContract.html',msg = msg,values = ["", "", "", "", ""])
+
+    
 
 
 @app.route('/')
@@ -107,38 +163,20 @@ def listing():
 
 @app.route('/CreateContract/<id>', methods=['GET', 'POST'])
 def CreateContract(id):
+    values = ['','','']
     if user.LoggedIn:
-        if id:
-            cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
-            values = list(cursor.fetchall()[0])
-
+        try:
+            if id:
+                cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
+                values = list(cursor.fetchall()[0])
+        except:
+            values = ['','','']
         msg = 'Please Fill up the Form'
         array = ['ID1', 'ID2', 'ID3', 'ID4']
-        print(request.form)
-        print(request.method)
-        if request.method == 'POST' and 'creator_Id' in request.form:
-            print(111)
-            if request.form['password'] == user.password:
-                party1_Id = user.Id
-                party2_Id = request.form['cdreator_I']
-                party2_pledge = request.form['order']
-                party1_pledge = request.form['price']
-                array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
+        return render_template('CreateContract.html',values = values)
 
-                if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
-                    msg = 'Please fill the form correctly'
-
-                else:
-                    Make_Contract(party1_Id, party2_Id,
-                                  party1_pledge, party2_pledge)
-                    msg = 'Order Placed succesfully'
-                    array = ["", "", "", "", ""]
-            else:
-                msg = 'Please Enter the correct Password'
-
-        return render_template('CreateContract.html', msg=msg, array=array, values=values)
     else:
-        return render_template('login.html', msg='Login to your account')
+        return render_template('login.html', msg='Login to your account',values = values)
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -154,22 +192,26 @@ def dashboard():
         return render_template('login.html', msg='Login to your account')
 
 
-@app.route("/contract/<Contract_Id>", methods=['GET', 'POST'])
+@app.route("/contract/<Contract_Id>", methods =['GET', 'POST'])
 def ContractDeet(Contract_Id):
     cursor.execute("SELECT * FROM contract WHERE id={};".format(Contract_Id))
+    user.contract_Id = Contract_Id
 
     data = list(cursor.fetchall()[0])
-    if data[5] == 0:
+    if data[5]== 0:
         data[5] = "No"
     else:
         data[5] = "Yes"
-    if data[6] == 0:
+    if data[6]== 0:
         data[6] = "No"
     else:
         data[6] = "Yes"
     print(data)
 
-    return render_template('ContractDeets.html', data=data)
+
+
+
+    return render_template('ContractDeets.html', data = data)
 
 
 @app.route('/login', methods=['GET', 'POST'])
