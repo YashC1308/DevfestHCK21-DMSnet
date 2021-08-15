@@ -56,7 +56,10 @@ header .logo {
 }
 .form-aes {
   margin-bottom: 7px;
-  border-radius: 4px;
+  border-top: rgba(255, 255, 255, 0);
+  border-left: rgba(255, 255, 255, 0);
+  border-right: rgba(255, 255, 255, 0);
+  outline: none;
 }
 .link {
   display: flex;
