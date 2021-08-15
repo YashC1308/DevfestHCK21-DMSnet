@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS-Net</title>
+    <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}" >
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <h2 class ="logo">DMS-Net</h2>
+            <ul class="nav_links">
+                <li><a href="{{ url_for('index') }}" title="">Home</a></li>
+                <li><a href="{{ url_for('login') }}" title="">Login</a></li>
+                <li><a href="{{ url_for('sign_up') }}" title="">Create Account</a></li>
+                <li><a href="#" title="">About</a></li>
+                <li><a href="mailto:#0">Contact</a></li>
+            </ul>
+        </header>
+        <div class="overlay"></div>
+        <video src="production ID_4440813.mp4" muted loop autoplay></video>
+    <div class="container-sign">
+        <div class="image-sign">
+            <img src="{{ url_for('static', filename='Join.gif') }}" width="400px">
+        </div>
+        <div class='myform-sign'>
+            <form action="{{ url_for('sign_up') }}" method="POST" id='form1'>
+                <h2>Create Account</h2>
+                <h3>{{msg}}</h3>
+                <input type='text' placeholder="Email Address"  name = 'email' id = 'email'>
+                <input type='text' placeholder="User Name" name = 'username' id = 'username'>
+
+                <input type='password' placeholder='Password' name = 'password' id = 'password'>
+                <input type='password' placeholder='Re-Enter Password' name = 'password2' id = 'password2'>
+                <select  name ='type' aria-label="Type of Account" style="width: 100%;">
+                <option selected>Select</option>
+                <option value = 'creator'>Creator</option>
+                <option value = 'customer'>Customer</option>
+            </select>
+                <button type='submit' id="signup">Create Account</button>
+
+            </form>
+        </div>
+
+
+    </div>
+    </section>
+</body>
+</html>

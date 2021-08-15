@@ -10,7 +10,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 40px 100px;
+  padding: 40px 20px;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -23,6 +23,79 @@ header .logo {
 }
 .nav_links {
   list-style: none;
+}
+.cardy {
+  width: 18rem;
+  background: rgba(255, 255, 255, 0.822);
+  border: 2px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 4;
+}
+.edit-cardy {
+  width: 18rem;
+  background: rgba(255, 255, 255, 0.822);
+  border: 2px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+.grid-container-edit {
+  display: grid;
+  margin-left: 5%;
+  margin-top: 0px;
+  align-content: center;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  background-color: #ffffff00;
+  column-gap: 80px;
+  row-gap: 50px;
+  height: auto;
+  padding: 100px;
+  z-index: 4;
+}
+.link {
+  display: flex;
+  justify-content: space-around;
+  color: #0c0c0cc5;
+}
+.btny {
+  margin-top: 10px;
+  width: 4vw;
+  height: 1.7vw;
+  background: #818181;
+  cursor: pointer;
+  border-radius: 7%;
+  border-color: #818181;
+  opacity: 0.8;
+  font-size: 1rem;
+  box-shadow: inset 0 0 0 0 rgb(255, 201, 14);
+}
+.btny:hover {
+  box-shadow: inset 8vw 0 0 0 rgb(255, 201, 14);
+  color: #000000;
+}
+
+.grid-container {
+  display: grid;
+  margin-left: 10%;
+  margin-top: 40px;
+  align-content: center;
+  grid-template-columns: auto auto auto;
+  background-color: #ffffff7e;
+  column-gap: 80px;
+  row-gap: 50px;
+  height: auto;
+  padding: 100px;
+}
+.image {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}
+.content {
+  padding: 10px;
 }
 .nav_links li,
 a {

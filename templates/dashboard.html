@@ -5,25 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/DevfestHCK21-DMSnet/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <section class="showcase">
         <header>
             <h2 class ="logo">DMS-Net</h2>
             <ul class="nav_links">
-                <li><a href="dashboard.html" title="">Dashboard</a></li>
+                <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
                 <li><a href="#" title="">My Profile</a></li>
-                <li><a href="#" title="">Logout</a></li>
+                <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
             </ul>
         </header>
         <div class="overlay"></div>
-        <video src="/DevfestHCK21-DMSnet/static/BGVID.mp4" muted loop autoplay></video>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="sidebar">
             <div class="spacer"></div>
             <ul>
+<<<<<<< HEAD
                 <li><a href="{{ url_for('CreateContract') }}">Place Order</a></li>
                 <li><a href="#">Search</a></li>
+=======
+                <li><a href="{{url_for('CreateContract') }}">Place Order</a></li>
+                <li><a href="{{url_for('listing') }}">Search</a></li>
+>>>>>>> main
                 <li><a href="#">Chat</a></li>
             </ul>
         </div>
@@ -37,14 +42,18 @@
                     <th>Status</th>
                     <th>View Details</th>
                 </tr></br>
-                <tr>
-                    <td>001</td>
-                    <td>Yash</td>
-                    <td>1234</td>
-                    <td>15-08-21</td>
-                    <td>Approved</td>
-                    <td><a href="#">View Details</a></td>
-                </tr>
+
+                        {% for (k,v,z,y,w) in data %}
+                        <tr style = ' width: 250px;text-align: center;border: 0.5px solid #9c9c9c; background-color: rgba(255, 255, 255, 0.753);'>
+                        <td>{{ w }}</td>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                        <td>{{ z }}</td>
+                        <td>{{ y }}</td>
+                        <td><a href = 'contract/{{w}}'>OPEN LINK</a></td>
+                        </tr>
+        {% endfor %}
+
             </table>
         </div>
     </section>

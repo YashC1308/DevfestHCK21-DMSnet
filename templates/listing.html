@@ -1,91 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-  </head>
-  <style>
-body{
-  background-image: url("{{ url_for('static', filename='BG.jpeg') }}");
-}
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  border: 3px solid white blur(10px);
-  backdrop-filter: blur(50px);
-  background-clip: border-box;
-  box-shadow: 10px 10px 10px rgba(45, 55, 68, 0.3);
-  
-}
-.rco{
-  border: 2px;
-  border-radius:8px;
-}
-.card-small {
-     width:300px;
-    }
 
-  </style>
 
-  <body class = "">
+<body>
+    <section class="showcase">
         <header>
             <h2 class ="logo">DMS-Net</h2>
+
             <ul class="nav_links">
+<<<<<<< HEAD
                 <li><a href="#" title="">Dashboard</a></li>
                 <li><a href="{{ url_for('CreateContract') }}" title="">Place Order</a></li>
                 <li><a href="#" title="">Search</a></li>
                 <li><a href="#" title="">Chat</a></li>
+=======
+                <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
+>>>>>>> main
                 <li><a href="#" title="">My Profile</a></li>
+                <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
+                <li>  <form action="{{ url_for('listing') }}" method="POST" id='form1'>
+                <h2> Search for artist</h2>
+                <select  name ='type' aria-label="Type of Account" style="width: 100%;">
+                <option selected>Select</option>
+                {% for i in options %}
+                <option value = "{{i[0]}}">{{i[0]}}</option>
+
+                {% endfor %}
+                </select>
+
+                <button type='submit'>search</button>
+
+            </form></li>
             </ul>
         </header>
-  <br>
-  </br>
-  <br></br>
+        <div class="overlay"></div>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
+        <div class="sidebar">
+            <div class="spacer"></div>
+            <ul>
+                <li><a href="{{url_for('CreateContract') }}">Place Order</a></li>
+                <li><a href="{{url_for('listing') }}">Search</a></li>
+                <li><a href="#">Chat</a></li>
+            </ul>
 
-
-
- <div >
-      <div class="col s3 m6 l6">
-              <div class="card card-small">
-                        
- {% for card in data %} 
-
-<div class="container-cards">
-<div class="card-image">
-          <img src="C:/Users/SoI/Desktop/DMS-Net/website/static/factory.png">
-          <span class="card-title">Factory name</span>
         </div>
-        <div class="card-content">
-          <p>card</p>
+
+        <div class="grid-container">
+ {% for profile in data %} 
+         <div class="cardy">
+      <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image" />
+      <div class="content">
+        <h4>{{profile[1]}}</h4>
+        <h5>{{profile[2]}}</h5>
+        <p>
+          {{profile[3]}} 
+        </p>
+        <div class="link">
+        <div class="btny"><a href="">MEH</a></div>
+          <div class="btny"><a href="">CHAT</a></div>
         </div>
-        <div class="card-action">
-          <a href="#">chat</a>
-          <a href="#">meh</a>
-          </div>
-</div>
-          <br>
-          <br>
-
-
-
-
-
-
-
-<br>
-{% endfor %}
         
-        </div>
-        </div>
-      </div>
+    </div>
+    </div>
+{%endfor%}
 
-  </body>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    </div>
+
+        <div class="overlay"></div>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
+        <div class="sidebar">
+            <div class="spacer"></div>
+            <ul>
+                <li><a href="#">Place Order</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Chat</a></li>
+            </ul>
+
+    </section>
+
+
+</body>
 </html>

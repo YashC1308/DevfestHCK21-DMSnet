@@ -46,6 +46,32 @@ INSERT INTO `contract` VALUES (1,36,42,'10 timber','30 rps',0,0,'2021-08-13'),(2
 UNLOCK TABLES;
 
 --
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `login` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(15) DEFAULT NULL,
+  `password` varchar(15) DEFAULT NULL,
+  `type` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES (1,'Amogh','lol','creator'),(2,'yash','lol','customer');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `profile`
 --
 
@@ -68,6 +94,32 @@ LOCK TABLES `profile` WRITE;
 INSERT INTO `profile` VALUES (1,'Hi I make artwork'),(2,'I do crocketry'),(3,'I paid for 1000 characters and i will use 1000 characters'),(4,'Hi I make artwork'),(5,'Hi I make artwork'),(6,'Hi I make artwork');
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `profiles`
+--
+
+DROP TABLE IF EXISTS `profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `profiles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(1000) NOT NULL,
+  `type_of_art` varchar(1000) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `profiles`
+--
+
+LOCK TABLES `profiles` WRITE;
+/*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
+INSERT INTO `profiles` VALUES (1,'Amogh','Digital Art','hI there I make art using adobe software Suite'),(2,'Norman','Sculpturest','hI there I carve wooden sculptures'),(3,'Sal','Painter','hI there I make art using paintbrushes'),(4,'Nims','Sculptor','hI there I carve wooden sculptures'),(5,'Yash','Painter','hI there I make art using paintbrushes'),(6,'Sidak','Sculptor','hI there I carve wooden sculptures');
+/*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -78,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-15  1:04:37
+-- Dump completed on 2021-08-15  5:31:17

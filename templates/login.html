@@ -1,12 +1,11 @@
-<!--LANDING PAGE-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>DMS-Net</title>
+    <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}" >
 </head>
 <body>
     <section class="showcase">
@@ -22,21 +21,21 @@
         </header>
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-        <div class="text">
-            <h2>Hello.</h2>
-            <h3>We are DMS-Net</h3>
-            <p>A platform where small scale manufacturers such as Textile Mills and crockery makers can register and startups or other businesses can find them and make a contract with them to produce goods that they have designed</p>
-            <a href="login1.html">Login now</a>
+    <div class="container">
+        <div class='myform'>
+            <form action="{{ url_for('login') }}" method="POST" id='form1'>
+                <h2> Login </h2>
+                <h3>{{msg}}</h3>
+                <input required autocomplete='off' type='text' placeholder="Username" name = 'username' id = 'username'>
+                <input required autocomplete='off' type='password' placeholder='Password' name = 'password' id = 'password'>
+                <button type='submit'>Login</button>
+
+            </form>
         </div>
-
-        <ul class="social">
-            <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
-            <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
-            <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
-          </ul>
-        </section>
-
+        <div class="image">
+            <img src="{{ url_for('static', filename='Login.gif') }}" width=300px ">
+        </div>
+    </div>
     </section>
-    
 </body>
 </html>
