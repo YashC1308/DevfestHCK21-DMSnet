@@ -54,6 +54,10 @@ header .logo {
   padding: 100px;
   z-index: 4;
 }
+.form-aes {
+  margin-bottom: 7px;
+  border-radius: 4px;
+}
 .link {
   display: flex;
   justify-content: space-around;
