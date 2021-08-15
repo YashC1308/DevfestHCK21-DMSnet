@@ -719,7 +719,7 @@ span.b {
 div.a {
   float: left;
   /* margin: 1px auto; */
-  margin-top: 40px;
+  margin-top: 10px;
   height: 50px;
   width: 50%;
   position: relative;
@@ -751,6 +751,8 @@ div.b {
   top: 50px;
   right: 300px;
   color: black;
+  margin-bottom: 0px;
+  padding: 0px;
 }
 .glass {
   background: rgba(255, 255, 255, 0.8);

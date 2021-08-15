@@ -44,23 +44,28 @@ Hi ! How can I help you
 
                         {% for (system,user) in chat %}
 
+{% if user%}
+
 <div class = 'b'>
 <span class  ='b'>
-{% if user!= ""%}
+
       {{user}}
-{% endif %}
+
 
 </span>
 </div>
+{% endif %}
 
+{% if system %}
 <div class = 'a'>
 <span class  ='a'>
-{% if system!="" %}
-      {{system}}
-{% endif %}
-</span>
-</div>
 
+      {{system}}
+
+</span>
+
+</div>
+{% endif %}
 
 
         {% endfor %}
