@@ -25,11 +25,33 @@ header .logo {
   list-style: none;
 }
 .cardy {
-  width: auto;
+  width: 18rem;
   background: rgba(255, 255, 255, 0.822);
   border: 2px;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 4;
+}
+.edit-cardy {
+  width: 18rem;
+  background: rgba(255, 255, 255, 0.822);
+  border: 2px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+.grid-container-edit {
+  display: grid;
+  margin-left: 5%;
+  margin-top: 0px;
+  align-content: center;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  background-color: #ffffff00;
+  column-gap: 80px;
+  row-gap: 50px;
+  height: auto;
+  padding: 100px;
   z-index: 4;
 }
 .link {
@@ -38,7 +60,7 @@ header .logo {
   color: #0c0c0cc5;
 }
 .btny {
-  margin-top:10px ;
+  margin-top: 10px;
   width: 4vw;
   height: 1.7vw;
   background: #818181;
@@ -56,22 +78,21 @@ header .logo {
 
 .grid-container {
   display: grid;
-  margin-left: 250px;
+  margin-left: 10%;
+  margin-top: 40px;
   align-content: center;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   background-color: #ffffff7e;
-  column-gap: 100px;
+  column-gap: 80px;
   row-gap: 50px;
   height: auto;
   padding: 100px;
 }
-
 .image {
   width: 100%;
   height: 15vw;
   object-fit: cover;
   border-radius: 8px 8px 0px 0px;
-
 }
 .content {
   padding: 10px;
@@ -140,7 +161,6 @@ a {
   height: 100%;
   background: #000000b7;
   mix-blend-mode: overlay;
-  
 }
 .text {
   position: relative;
@@ -474,5 +494,3 @@ td {
 div.dashboard td a {
   color: black;
 }
-
-
