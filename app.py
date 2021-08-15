@@ -266,7 +266,8 @@ def msgsdr(name,messages,receiver,sender):
     try:
         try:
             #query may need edit
-            cursor.execute("select UserId from {} where Name='{}';".format(TBL1_NAME,name))
+            #cursor.execute("select UserId from {} where Name='{}';".format(TBL1_NAME,name))
+            print("aaaaa")
         except:
             print("No such user exists")
         else:
@@ -277,6 +278,7 @@ def msgsdr(name,messages,receiver,sender):
             cnx.commit()
     except:
         print("Oops! An error occured, try again later")
+        
 def recmsg(sender,receiver):
     cursor.execute("select chat_message,timestamp,from_user_id from chat_message where from_user_id = {} or from_user_id={}  order by timestamp".format(sender,receiver))
     data=cursor.fetchall()
