@@ -20,7 +20,7 @@
             </ul>
         </header>
         <div class="overlay"></div>
-        <video src="production ID_4440813.mp4" muted loop autoplay></video>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
     <div class="container-sign">
         <div class="image-sign">
             <img src="{{ url_for('static', filename='Join.gif') }}" width="400px">
@@ -28,7 +28,7 @@
         <div class='myform-sign'>
             <form action="{{ url_for('sign_up') }}" method="POST" id='form1'>
                 <h2>Create Account</h2>
-                <h3>{{msg}}</h3>
+                <h4>{{msg}}</h4>
                 <input type='text' placeholder="Email Address"  name = 'email' id = 'email'>
                 <input type='text' placeholder="User Name" name = 'username' id = 'username'>
 
