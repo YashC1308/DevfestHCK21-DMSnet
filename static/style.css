@@ -687,3 +687,76 @@ div.container-profile div.image img {
   box-shadow: inset 8vw 0 0 0 rgb(255, 201, 14);
   color: #000000;
 }
+span.a {
+  display: inline;
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 50px;
+  float: left;
+
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+span.b {
+  display: inline;
+  border: 2px solid #dedede;
+  border-color: #ccc;
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  float: right;
+
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+}
+
+div.a {
+  float: left;
+  /* margin: 1px auto; */
+  margin-top: 40px;
+  height: 50px;
+  width: 50%;
+  position: relative;
+}
+div.b {
+  float: right;
+  /* margin: 1px auto; */
+  margin-top: 60px;
+  margin-right: 60px;
+  height: 50px;
+  width: 50%;
+  position: relative;
+}
+#chatbox {
+  z-index: 20;
+  padding-top: 150px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid transparent;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  background-clip: border-box;
+  box-shadow: 10px 10px 10px rgba(45, 55, 68, 0.3);
+  position: absolute;
+  top: 100px;
+  width: 50%;
+}
+.chath {
+  position: absolute;
+  top: 50px;
+  right: 300px;
+  color: black;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid transparent;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  background-clip: border-box;
+  box-shadow: 10px 10px 10px rgba(45, 55, 68, 0.3);
+}
