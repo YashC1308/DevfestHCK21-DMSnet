@@ -69,12 +69,25 @@ def Load_Dashboard(party1_Id):
     return data
 
 
-def Make_Contract(party1_Id, party2_Id, party1_pledge, party2_pledge):
-    Date = date.today()
+@app.route('/MakeContract', methods=['GET', 'POST'])
 
-    cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(
-        party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
-    cnx.commit()
+def MakeContract():
+    values = ['', '', '']
+    Date = date.today()
+    if request.method == 'POST' and 'creator_Id' in request.form:
+        print(111)
+
+        msg = 'Please fill the form correctly'
+
+
+        cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
+        cnx.commit()
+        msg = 'Order Placed succesfully'
+        array = ["", "", "", "", ""]
+    else:
+        msg = 'Please Enter the correct Password'
+
+    return render_template('CreateContract.html', msg=msg, values=["", "", "", "", ""])
 
 
 @app.route('/')
@@ -115,40 +128,26 @@ def listing():
         return render_template('login.html', msg='Login to your account')
 
 
+
+
 @app.route('/CreateContract/<id>', methods=['GET', 'POST'])
 def CreateContract(id):
+    values = ['', '', '']
     if user.LoggedIn:
-        if id:
-            cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
-            values = list(cursor.fetchall()[0])
-
+        try:
+            if id:
+                
+                cursor.execute(
+                    "SELECT * FROM contract WHERE id={};".format(id))
+                values = list(cursor.fetchall()[0])
+        except:
+            values = ['', '', '']
         msg = 'Please Fill up the Form'
         array = ['ID1', 'ID2', 'ID3', 'ID4']
-        print(request.form)
-        print(request.method)
-        if request.method == 'POST' and 'creator_Id' in request.form:
-            print(111)
-            if request.form['password'] == user.password:
-                party1_Id = user.Id
-                party2_Id = request.form['cdreator_I']
-                party2_pledge = request.form['order']
-                party1_pledge = request.form['price']
-                array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
+        return render_template('CreateContract.html', values=values)
 
-                if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
-                    msg = 'Please fill the form correctly'
-
-                else:
-                    Make_Contract(party1_Id, party2_Id,
-                                  party1_pledge, party2_pledge)
-                    msg = 'Order Placed succesfully'
-                    array = ["", "", "", "", ""]
-            else:
-                msg = 'Please Enter the correct Password'
-
-        return render_template('CreateContract.html', msg=msg, array=array, values=values)
     else:
-        return render_template('login.html', msg='Login to your account')
+        return render_template('login.html', msg='Login to your account', values=values)
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
