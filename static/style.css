@@ -242,14 +242,17 @@ div.container {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 35%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgb(255, 255, 255);
   padding: 30px;
   box-shadow: 0 50px 50px -px rgb(0, 0, 0);
   border-radius: 10px;
+  padding-bottom: 90px;
+  margin-right: 0;
 }
 div.container-cards {
   top: 50%;
@@ -259,9 +262,10 @@ div.container-cards {
   flex-direction: row;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  padding: 30px;
+  padding: 40px;
   box-shadow: 0 50px 50px -px rgb(0, 0, 0);
   border-radius: 10px;
+  margin: 10px;
 }
 div.container div.myform {
   width: 270px;
@@ -290,7 +294,14 @@ div.container div.myform button {
   font-size: 14px;
   padding: 7px 14px;
 }
-div.container div.image image {
+div.container div.image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+div.container div.image img {
+  display: inline-flex;
+  margin-left: 10px;
   border-radius: 10px;
 }
 

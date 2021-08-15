@@ -25,15 +25,14 @@
         <div class='myform'>
             <form action="{{ url_for('login') }}" method="POST" id='form1'>
                 <h2> Login </h2>
-                <h3>{{msg}}</h3>
+                <!--<h3>{{msg}}</h3>-->
                 <input required autocomplete='off' type='text' placeholder="Username" name = 'username' id = 'username'>
                 <input required autocomplete='off' type='password' placeholder='Password' name = 'password' id = 'password'>
                 <button type='submit'>Login</button>
-
             </form>
         </div>
         <div class="image">
-            <img src="{{ url_for('static', filename='Login.gif') }}" width=300px ">
+            <img src="{{ url_for('static', filename='Login.gif') }}" width=300px>
         </div>
     </div>
     </section>
