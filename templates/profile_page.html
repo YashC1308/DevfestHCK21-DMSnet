@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile</title>
+    <link rel="stylesheet" href="/DevfestHCK21-DMSnet/static/style.css">
+
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <h2 class ="logo">DMS-Net</h2>
+            <ul class="nav_links">
+                <li><a href="#" title="">Dashboard</a></li>
+                <li><a href="#" title="">My Profile</a></li>
+                <li><a href="#"  title="">Logout</a></li>
+            </ul>
+        </header>
+
+        <div class="overlay"></div>
+        <video src="/DevfestHCK21-DMSnet/static/BGVID.mp4" muted loop autoplay></video>
+        <div class="sidebar">
+            <div class="spacer"></div>
+            <ul >
+                <li><h4>Hello, {{type}}</h4></li>
+                <li><a href = "#">Place Order</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Chat</a></li>
+            </ul>
+        </div>
+        <div class="container-profile">
+            <div class='myform-profile'>
+                <form action="{{ url_for('login') }}" method="POST" id='form1'>
+                    <h2> Your Profile </h2>
+                    <input required autocomplete='off' type='text' placeholder="Profile[1]" value="Prolfile[1]" >
+                    <input required autocomplete='off' type='text' placeholder='profile[2]' value="Profile[2]">
+                    <input required autocomplete='off' type='text' placeholder='profile[3]' value="Profile[3]">
+                    <button type='submit'>Save Changes</button>
+
+                </form>
+            </div>
+        <div class="image">
+            <img src="/DevfestHCK21-DMSnet/static/Profile_pic1.jpg" width=360px>
+        </div>
+        </div>
+
+        <div class="profile-cont">
+            <div class="cardy-profile">
+                <img src="/DevfestHCK21-DMSnet/static/Profile_pic1.jpg" alt="" class="image" />
+                <div class="content">
+                    <h4>{{profile[1]}}</h4>
+                    <h5>{{profile[2]}}</h5>
+                    <p>
+                        {{data[i][3]}} 
+                    </p>
+                    <div class="link">
+                    <div class="btny-profile"><a href = '/CreateContract/{{data[i][0]}}'>Order</a></div>
+                        <div class="btny-profile"><a href="">CHAT</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

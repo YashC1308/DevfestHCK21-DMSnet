@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='15w60ps',
+cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -68,45 +68,48 @@ def Load_Dashboard(party1_Id):
     print(data)
     return data
 
-@app.route('/AcceptContract', methods =['GET', 'POST'])
+
+@app.route('/AcceptContract', methods=['GET', 'POST'])
 def AcceptContract():
     print(request.form)
-    cursor.execute("SELECT * FROM contract WHERE id={};".format(user.contract_Id))
-
+    cursor.execute(
+        "SELECT * FROM contract WHERE id={};".format(user.contract_Id))
 
     data = list(cursor.fetchall()[0])
-    if data[5]== 0:
+    if data[5] == 0:
         data[5] = "No"
     else:
         data[5] = "Yes"
-    if data[6]== 0:
+    if data[6] == 0:
         data[6] = "No"
     else:
         data[6] = "Yes"
-    if request.method == 'POST' :
+    if request.method == 'POST':
 
         if request.form.get('approve'):
 
-            cursor.execute('UPDATE contract SET party2_accepted = 1 WHERE id = {};'.format(user.contract_Id))
+            cursor.execute('UPDATE contract SET party2_accepted = 1 WHERE id = {};'.format(
+                user.contract_Id))
             cnx.commit()
-            cursor.execute("SELECT * FROM contract WHERE id={};".format(user.contract_Id))
-
+            cursor.execute(
+                "SELECT * FROM contract WHERE id={};".format(user.contract_Id))
 
             data = list(cursor.fetchall()[0])
-            if data[5]== 0:
+            if data[5] == 0:
                 data[5] = "No"
             else:
                 data[5] = "Yes"
-            if data[6]== 0:
+            if data[6] == 0:
                 data[6] = "No"
             else:
                 data[6] = "Yes"
-            return render_template('ContractDeets.html', data = data)
-    return render_template('ContractDeets.html', data = data)
+            return render_template('ContractDeets.html', data=data)
+    return render_template('ContractDeets.html', data=data)
 
-@app.route('/MakeContract', methods =['GET', 'POST'])
+
+@app.route('/MakeContract', methods=['GET', 'POST'])
 def MakeContract():
-    values = ['','','']
+    values = ['', '', '']
     Date = date.today()
     if request.method == 'POST' and 'creator_Id' in request.form:
         print(111)
@@ -121,16 +124,15 @@ def MakeContract():
                 msg = 'Please fill the form correctly'
 
             else:
-                cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
+                cursor.execute("INSERT INTO contract  VALUES (NULL,'{}','{}','{}','{}',1,0,'{}');".format(
+                    party1_Id, party2_Id, party1_pledge, party2_pledge, Date))
                 cnx.commit()
                 msg = 'Order Placed succesfully'
                 array = ["", "", "", "", ""]
         else:
             msg = 'Please Enter the correct Password'
 
-    return render_template('CreateContract.html',msg = msg,values = ["", "", "", "", ""])
-
-    
+    return render_template('CreateContract.html', msg=msg, values=["", "", "", "", ""])
 
 
 @app.route('/')
@@ -155,15 +157,16 @@ def listing():
             cursor.execute(
                 "select * from profiles where type_of_art ='{}';".format(request.form['type']))
             data1 = cursor.fetchall()
-         
-        pictures = ['Profile_pic1.jpg','Profile_pic2.jpg','Profile_pic3.jpg','Profile_pic4.jpg','Profile_pic5.jpg','Profile_pic6.jpg']
+
+        pictures = ['Profile_pic1.jpg', 'Profile_pic2.jpg', 'Profile_pic3.jpg',
+                    'Profile_pic4.jpg', 'Profile_pic5.jpg', 'Profile_pic6.jpg']
         data = []
         for i in data1:
             data.append(list(i))
         for i in range(len(data)):
             j = i
             if i > 5:
-                j-=5
+                j -= 5
 
             data[i].append(pictures[j])
         return render_template('listing.html', data=data, options=options)
@@ -173,20 +176,21 @@ def listing():
 
 @app.route('/CreateContract/<id>', methods=['GET', 'POST'])
 def CreateContract(id):
-    values = ['','','']
+    values = ['', '', '']
     if user.LoggedIn:
         try:
             if id:
-                cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
+                cursor.execute(
+                    "SELECT * FROM contract WHERE id={};".format(id))
                 values = list(cursor.fetchall()[0])
         except:
-            values = ['','','']
+            values = ['', '', '']
         msg = 'Please Fill up the Form'
         array = ['ID1', 'ID2', 'ID3', 'ID4']
-        return render_template('CreateContract.html',values = values)
+        return render_template('CreateContract.html', values=values)
 
     else:
-        return render_template('login.html', msg='Login to your account',values = values)
+        return render_template('login.html', msg='Login to your account', values=values)
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -202,26 +206,23 @@ def dashboard():
         return render_template('login.html', msg='Login to your account')
 
 
-@app.route("/contract/<Contract_Id>", methods =['GET', 'POST'])
+@app.route("/contract/<Contract_Id>", methods=['GET', 'POST'])
 def ContractDeet(Contract_Id):
     cursor.execute("SELECT * FROM contract WHERE id={};".format(Contract_Id))
     user.contract_Id = Contract_Id
 
     data = list(cursor.fetchall()[0])
-    if data[5]== 0:
+    if data[5] == 0:
         data[5] = "No"
     else:
         data[5] = "Yes"
-    if data[6]== 0:
+    if data[6] == 0:
         data[6] = "No"
     else:
         data[6] = "Yes"
     print(data)
 
-
-
-
-    return render_template('ContractDeets.html', data = data,type=user.Type)
+    return render_template('ContractDeets.html', data=data, type=user.Type)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -275,7 +276,7 @@ def logout():
 def profile():
     if user.LoggedIn:
 
-        return render_template('profile.html', profile=data, options=options,type= user.Type)
+        return render_template('profile.html', profile=data, options=options, type=user.Type)
     else:
         return render_template('login.html', msg='Login here')
 
@@ -293,7 +294,8 @@ def sign_up():
         password2 = request.form['password2']
         Type = request.form['type']
         if password2 == password:
-            cursor.execute("insert into login values(NULL,'{}','{}','{}')".format(username, password, Type))
+            cursor.execute("insert into login values(NULL,'{}','{}','{}')".format(
+                username, password, Type))
             cnx.commit()
             msg = "Sign up success"
             return render_template('login.html', msg=msg)
