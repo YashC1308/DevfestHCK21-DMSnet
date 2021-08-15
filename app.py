@@ -108,32 +108,41 @@ def listing():
 
 @app.route('/CreateContract', methods =['GET', 'POST'])
 def CreateContract():
-    msg = 'Please Fill up the Form'
-    array = ['ID1','ID2','ID3','ID4']
-    if request.method == 'POST' and 'party1_Id' in request.form:
-        party1_Id = request.form['party1_Id']
-        party2_Id = request.form['party2_Id']
-        party1_pledge = request.form['party1_pledge']
-        party2_pledge = request.form['party2_pledge']
-        array = (party1_Id,party2_Id,party1_pledge,party2_pledge)
+    if user.LoggedIn:
+        msg = 'Please Fill up the Form'
+        array = ['ID1','ID2','ID3','ID4']
+        print(request.form)
+        print(request.method)
+        if request.method == 'POST' and 'creator_Id' in request.form:
+            print(111)
+            if request.form['password']== user.password:
+                party1_Id = user.Id
+                party2_Id = request.form['creator_Id']
+                party2_pledge = request.form['order']
+                party1_pledge = request.form['price']
+                array = (party1_Id,party2_Id,party1_pledge,party2_pledge)
 
-        if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
-            msg = 'Please fill the form correctly'
-            print(msg)
-        
-        else:
-            Make_Contract(party1_Id,party2_Id,party1_pledge,party2_pledge)
-            array = ["","","","",""]
+                if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
+                    msg = 'Please fill the form correctly'
+                    print(msg)
+                
+                else:
+                    Make_Contract(party1_Id,party2_Id,party1_pledge,party2_pledge)
+                    msg = 'Order Placed succesfully'
+                    array = ["","","","",""]
+            else:
+                msg = 'Please Enter the correct Password'
 
-
-    return render_template('CreateContract.html', msg = msg,array = array)
+        return render_template('CreateContract.html', msg = msg,array = array)
+    else:
+        return render_template('login.html', msg = 'Login to your account')
 
 @app.route('/dashboard', methods =['GET', 'POST'])
 def dashboard():
 
     if user.LoggedIn:
 
-        data = Load_Dashboard(36)
+        data = Load_Dashboard(user.Id)
 
 
 
@@ -168,7 +177,7 @@ def login():
     print(request.form)
     if user.LoggedIn:
         print('attempt to load dashboard')
-        data = Load_Dashboard(36)
+        data = Load_Dashboard(user.Id)
         print('dashboard loaded ')
         return render_template('dashboard.html',data = data)
     else:
@@ -185,9 +194,9 @@ def login():
                 
             if Id:
                 msg = 'Logged In'
-                user.Login(Id,Type)
+                user.Login(Id,Type,password)
                 print('attempt to load dashboard')
-                data = Load_Dashboard(36)
+                data = Load_Dashboard(user.Id)
                 print('dashboard loaded ')
                 return render_template('dashboard.html',data = data)
 

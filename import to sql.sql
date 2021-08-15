@@ -32,7 +32,7 @@ CREATE TABLE `contract` (
   `party2_accepted` int DEFAULT NULL,
   `date` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `contract` (
 
 LOCK TABLES `contract` WRITE;
 /*!40000 ALTER TABLE `contract` DISABLE KEYS */;
-INSERT INTO `contract` VALUES (1,36,42,'10 timber','30 rps',0,0,'2021-08-13'),(2,36,56,'10 stone','400 rps',0,0,'2021-08-13'),(3,56,42,'40 gld','30 rps',0,0,'2021-08-13'),(4,36,47,'40 towels','400 rps',0,0,'2021-08-13');
+INSERT INTO `contract` VALUES (1,36,42,'10 timber','30 rps',0,0,'2021-08-13'),(2,36,56,'10 stone','400 rps',0,0,'2021-08-13'),(3,56,42,'40 gld','30 rps',0,0,'2021-08-13'),(4,36,47,'40 towels','400 rps',0,0,'2021-08-13'),(5,1,45,'100 rupees','Naruto Fanart',0,0,'2021-08-15'),(6,1,67,'10','hankie',0,0,'2021-08-15'),(7,1,45,'80 rupees','naruto state',0,0,'2021-08-15');
 /*!40000 ALTER TABLE `contract` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `login` (
   `password` varchar(15) DEFAULT NULL,
   `type` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'Amogh','lol','creator'),(2,'yash','lol','customer');
+INSERT INTO `login` VALUES (1,'Amogh','lol','creator'),(2,'yash','lol','customer'),(3,'Customer1','lol','customer');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-15  5:31:17
+-- Dump completed on 2021-08-15 12:32:45

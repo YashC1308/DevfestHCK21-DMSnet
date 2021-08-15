@@ -31,13 +31,14 @@
         <video src={{ url_for('static', filename='BGVID.mp4') }} muted loop autoplay></video>
     <div class="container-order">
         <div class='myform-order'>
-            <form>
+            <form action="{{ url_for('CreateContract') }}" method="POST" id='form1'>
                 <h2>Place an Order </h2>
-                <input type='text' placeholder="Your ID">
-                <input type='text' placeholder="Merchant ID">
-                <input type='text' placeholder="Your Order">
-                <input type='text' placeholder="Price Qouted">
-                <input type='password' placeholder='Your Password to Authorise'>
+                <h3>{{msg}}</h3>
+
+                <input type='text' placeholder="Creator ID" id = 'creator_Id'   name = 'creator_Id'>
+                <input type='text' placeholder="Your Order" id = 'order' name = 'order'>
+                 <input type='text' placeholder="Price Qouted" id = 'price' name = 'price'>
+                <input type='password' placeholder='Your Password to Authorise' id = 'password' name = 'password'>
                 <button type='submit'>Place Order</button>
 
             </form>
