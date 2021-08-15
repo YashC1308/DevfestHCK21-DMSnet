@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
+cnx = mysql.connector.connect(user='root', password='attendance@123',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -105,9 +105,13 @@ def listing():
         return render_template('login.html', msg='Login to your account')
 
 
-@app.route('/CreateContract', methods=['GET', 'POST'])
-def CreateContract():
+@app.route('/CreateContract/<id>', methods=['GET', 'POST'])
+def CreateContract(id):
     if user.LoggedIn:
+        if id:
+            cursor.execute("SELECT * FROM contract WHERE id={};".format(id))
+            values = list(cursor.fetchall()[0])
+            
         msg = 'Please Fill up the Form'
         array = ['ID1', 'ID2', 'ID3', 'ID4']
         print(request.form)
@@ -116,14 +120,13 @@ def CreateContract():
             print(111)
             if request.form['password'] == user.password:
                 party1_Id = user.Id
-                party2_Id = request.form['creator_Id']
+                party2_Id = request.form['cdreator_I']
                 party2_pledge = request.form['order']
                 party1_pledge = request.form['price']
                 array = (party1_Id, party2_Id, party1_pledge, party2_pledge)
 
                 if '' in array or 'ID1' in array or 'ID2' in array or 'ID3' in array or 'ID4' in array:
-                    msg = 'Please fill the form correctly'
-                    print(msg)
+                    msg = 'Please fill the form correctly' 
 
                 else:
                     Make_Contract(party1_Id, party2_Id,
@@ -133,7 +136,7 @@ def CreateContract():
             else:
                 msg = 'Please Enter the correct Password'
 
-        return render_template('CreateContract.html', msg=msg, array=array)
+        return render_template('CreateContract.html', msg=msg, array=array,values=values)
     else:
         return render_template('login.html', msg='Login to your account')
 

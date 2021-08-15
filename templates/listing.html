@@ -9,42 +9,26 @@
     
 </head>
 
-
-
 <body>
     <section class="showcase">
-        <header>
+               <header>
             <h2 class ="logo">DMS-Net</h2>
-
             <ul class="nav_links">
                 <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
                 <li><a href="#" title="">My Profile</a></li>
                 <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
-                <li>  <form action="{{ url_for('listing') }}" method="POST" id='form1'>
-                <h2> Search for artist</h2>
-                <select  name ='type' aria-label="Type of Account" style="width: 100%;">
-                <option selected>Select</option>
-                {% for i in options %}
-                <option value = "{{i[0]}}">{{i[0]}}</option>
-
-                {% endfor %}
-                </select>
-
-                <button type='submit'>search</button>
-
-            </form></li>
             </ul>
         </header>
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="sidebar">
             <div class="spacer"></div>
-            <ul>
-                <li><a href="{{url_for('CreateContract') }}">Place Order</a></li>
+            <ul >
+                <li><h4>Hello, {{type}}</h4></li>
+                <li><a href = '/CreateContract/" "'>Place Order</a></li>
                 <li><a href="{{url_for('listing') }}">Search</a></li>
                 <li><a href="#">Chat</a></li>
             </ul>
-
         </div>
 
         <div class="grid-container">
@@ -58,28 +42,24 @@
           {{profile[3]}} 
         </p>
         <div class="link">
-        <div class="btny"><a href="">MEH</a></div>
+        <div class="btny"><a href = '/CreateContract/{{profile[0]}}'>Order</a></div>
           <div class="btny"><a href="">CHAT</a></div>
         </div>
         
     </div>
     </div>
 {%endfor%}
-
-
-
     </div>
-
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-        <div class="sidebar">
-            <div class="spacer"></div>
-            <ul>
-                <li><a href="#">Place Order</a></li>
-                <li><a href="#">Search</a></li>
+         <div class="spacer"></div>
+            <ul >
+                <li><h4>Hello, {{type}}</h4></li>
+                <li><a href = '/CreateContract/'>Place Order</a></li>
+                <li><a href="{{url_for('listing') }}">Search</a></li>
                 <li><a href="#">Chat</a></li>
             </ul>
-
+        </div>
     </section>
 
 
