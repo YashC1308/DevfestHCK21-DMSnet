@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='attendance@123',
+cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -258,10 +258,12 @@ def sign_up():
 
     return render_template('sign_up.html', msg=msg)
 
-#sidak functions
-def msgsdr(name,messages,receiver,sender):
-    uid="idk"
-    TBL1_NAME="idk2"
+# sidak functions
+
+
+def msgsdr(name, messages, receiver, sender):
+    uid = "idk"
+    TBL1_NAME = "idk2"
     print("try")
     try:
         try:
@@ -271,10 +273,11 @@ def msgsdr(name,messages,receiver,sender):
         except:
             print("No such user exists")
         else:
-            data=cursor.fetchone()
-            (Rid,)=data
-            #query needs edit
-            cursor.execute("INSERT INTO `dims`.`chat_message` (`to_user_id`, `from_user_id`, `chat_message`, `status`) VALUES ({},{},{},'1');".format(receiver,sender,messages))
+            data = cursor.fetchone()
+            (Rid,) = data
+            # query needs edit
+            cursor.execute("INSERT INTO `dims`.`chat_message` (`to_user_id`, `from_user_id`, `chat_message`, `status`) VALUES ({},{},{},'1');".format(
+                receiver, sender, messages))
             cnx.commit()
     except:
         print("Oops! An error occured, try again later")
@@ -284,37 +287,38 @@ def recmsg(sender,receiver):
     data=cursor.fetchall()
     chat = []
     for i in data:
-        tar = ["",""]
-        if i[-1]==int(sender):
-            tar[0]=i[0]
+        tar = ["", ""]
+        if i[-1] == int(sender):
+            tar[0] = i[0]
         else:
-            tar[1]=i[0]
+            tar[1] = i[0]
         chat.append(tar)
-    
+
     for i in range(len(chat)-2):
-        if chat[i][0] and chat[i][1]=="":
-            chat[i][1]=chat[i+1][1]
+        if chat[i][0] and chat[i][1] == "":
+            chat[i][1] = chat[i+1][1]
             chat.pop(i+1)
-        if chat[i][1] and chat[i][0]=="":
-            chat[i][0]=chat[i+1][0]
+        if chat[i][1] and chat[i][0] == "":
+            chat[i][0] = chat[i+1][0]
             chat.pop(i+1)
-        if chat[i][0]=="" and chat[i+1][0]=="":
-            chat[i][1]+= " /n" + chat[i+1][1]
+        if chat[i][0] == "" and chat[i+1][0] == "":
+            chat[i][1] += " /n" + chat[i+1][1]
             chat.pop(i+1)
-        if chat[i][1]=="" and chat[i+1][1]=="":
-            chat[i][0]+= " /n" + chat[i+1][0]
+        if chat[i][1] == "" and chat[i+1][1] == "":
+            chat[i][0] += " /n" + chat[i+1][0]
             chat.pop(i+1)
     return chat
 
 
 @app.route('/chat', methods=['GET', 'POST'])
 def chat(rid="2"):
-    #get nm from html
+    # get nm from html
     sender = "1"
-    receiver=rid
-    chat = recmsg(sender,receiver)
+    receiver = rid
+    chat = recmsg(sender, receiver)
     print(chat)
-    return render_template("chat.html",chat=chat)
+    return render_template("chat.html", chat=chat)
+
 
 if __name__ == "__main__":
     app.run()
