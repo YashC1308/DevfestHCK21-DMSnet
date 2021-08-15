@@ -1,79 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Listings</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
 
-<body>
+  <body>
     <section class="showcase">
-               <header>
-            <h2 class ="logo">DMS-Net</h2>
-            <ul class="nav_links">
-                <li></li>
-            <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
-            <li><a href="#" title="">My Profile</a></li>
-            <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
-            </ul>
-        </header>
-        <div class='search'>
-            <form action="{{ url_for('listing') }}" method="POST" id='form1'>
-                <span><select  name ='type' aria-label="Type of Account" placeholder="Search for artist">
-                    <option value="placeholder" selected>Search here</option>
-                    {% for i in options %}
-                    <option value = "{{i[0]}}">{{i[0]}}</option>
+      <header>
+        <h2 class="logo">DMS-Net</h2>
+        <ul class="nav_links">
+          <li></li>
+          <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="{{url_for('logout') }}" title="">Logout</a></li>
+        </ul>
+      </header>
+      <div class="search">
+        <form action="{{ url_for('listing') }}" method="POST" id="form1">
+          <span
+            ><select
+              name="type"
+              aria-label="Type of Account"
+              placeholder="Search for artist"
+            >
+              <option value="placeholder" selected>Search here</option>
+              {% for i in options %}
+              <option value="{{i[0]}}">{{i[0]}}</option>
 
-                    {% endfor %}
-                    </select></span>
-                <span><button type='submit'>search</button></span>
-
-            </form>
+              {% endfor %}
+            </select></span
+          >
+          <span><button type="submit">search</button></span>
+        </form>
+      </div>
+      <div class="overlay"></div>
+      <video
+        src="{{ url_for('static', filename='BGVID.mp4') }}"
+        muted
+        loop
+        autoplay
+      ></video>
+      <div class="sidebar">
+        <div class="spacer"></div>
+        <ul>
+          <li><h4>Hello, {{type}}</h4></li>
+          <li><a href="#">Place Order</a></li>
+          <li><a href="{{url_for('listing') }}">Search</a></li>
+          <li><a href="#">Chat</a></li>
+        </ul>
+      </div>
+      <div class="grid-container">
+        {% for profile in data %}
+        <div class="cardy">
+          <img
+            src="{{ url_for('static', filename=profile[-1]) }}"
+            alt=""
+            class="image"
+          />
+          <div class="content">
+            <h4>{{profile[1]}}</h4>
+            <h5>{{profile[2]}}</h5>
+            <p>{{profile[3]}}</p>
+            <div class="link">
+              <div class="btny">
+                <a href="/CreateContract/{{profile[0]}}">Order</a>
+              </div>
+              <div class="btny"><a href="{{url_for('chat') }}">Chat</a></div>
+            </div>
+          </div>
         </div>
+        {%endfor%}
         <div class="overlay"></div>
-        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-        <div class="sidebar">
-            <div class="spacer"></div>
-            <ul >
-                <li><h4>Hello, {{type}}</h4></li>
-                <li><a href = "#">Place Order</a></li>
-                <li><a href="{{url_for('listing') }}">Search</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
-        </div>
-        <div class="grid-container">
- {% for profile in data %} 
-         <div class="cardy">
-      <img src="{{ url_for('static', filename=profile[-1]) }}" alt="" class="image" />
-      <div class="content">
-        <h4>{{profile[1]}}</h4>
-        <h5>{{profile[2]}}</h5>
-        <p>
-          {{profile[3]}} 
-        </p>
-        <div class="link">
-        <div class="btny"><a href="/CreateContract/{{profile[0]}}">Order</a></div>
-          <div class="btny"><a href="">CHAT</a></div>
-        </div>
-        
-    </div>
-    </div>
-{%endfor%}
-        <div class="overlay"></div>
-        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-         <div class="spacer"></div>
-            <ul >
-                <li><h4>Hello, {{type}}</h4></li>
-                <li><a href = '/CreateContract/'>Place Order</a></li>
-                <li><a href="{{url_for('listing') }}">Search</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
-        </div>
+        <video
+          src="{{ url_for('static', filename='BGVID.mp4') }}"
+          muted
+          loop
+          autoplay
+        ></video>
+        <div class="spacer"></div>
+        <ul>
+          <li><h4>Hello, {{type}}</h4></li>
+          <li><a href="/CreateContract/">Place Order</a></li>
+          <li><a href="{{url_for('listing') }}">Search</a></li>
+          <li><a href="#">Chat</a></li>
+        </ul>
+      </div>
     </section>
-
-
-</body>
+  </body>
 </html>
