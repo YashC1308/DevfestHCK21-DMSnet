@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <h2 class ="logo">DMS-Net</h2>
+            <ul class="nav_links">
+                <li><a href="dashboard.html" title="">Dashboard</a></li>
+                <li><a href="#" title="">My Profile</a></li>
+                <li><a href="#" title="">Logout</a></li>
+            </ul>
+        </header>
+        <div class="grid-container-edit">
+        <h2  style="color: white;" >Edit profile</h3>
+        <div class="edit-cardy">
+      <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image" />
+      <div class="content">
+      <form>
+      <input type="file" id="imageFile" accept="image/*" class = "form-aes">
+      <input type="text" id="heading" name="Heading" placeholder="heading" class = "form-aes">
+      <input type="text" id="category" name="Category" placeholder="category" class = "form-aes">
+      <input type="text" id="description" name="Description" placeholder="Your Introduction" class = "form-aes" style="height: 100px; width:80%;">
+      <button type='submit' id="submit_changes" class="btny">Submit </button>
+        </form>
+        
+    </div>
+    </div>
+
+    <h2 style="color: white;" >Profile Preview </h2>
+       <div class="edit-cardy">
+      <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image" />
+      <div class="content">
+        <h4>{{profile[1]}}</h4>
+        <h5>{{profile[2]}}</h5>
+        <p>
+          {{profile[3]}} 
+        </p>
+        <div class="link">
+        <div class="btny"><a href="">MEH</a></div>
+          <div class="btny"><a href="">CHAT</a></div>
+        </div>
+        
+    </div>
+    </div>
+    </div>
+
+    </div>
+
+    
+        <div class="overlay"></div>
+        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
+        <div class="sidebar">
+            <div class="spacer"></div>
+            <ul>
+                <li><a href="#">Place Order</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Chat</a></li>
+            </ul>
+
+    </section>
+
+
+</body>
+</html>
