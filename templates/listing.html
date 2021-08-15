@@ -46,24 +46,22 @@
         </div>
         <div class="grid-container">
  {% for profile in data %} 
- 
          <div class="cardy">
       <img src="{{ url_for('static', filename=profile[-1]) }}" alt="" class="image" />
       <div class="content">
         <h4>{{profile[1]}}</h4>
         <h5>{{profile[2]}}</h5>
         <p>
-          {{data[i][3]}} 
+          {{profile[3]}} 
         </p>
         <div class="link">
-        <div class="btny"><a href = '/CreateContract/{{data[i][0]}}'>Order</a></div>
+        <div class="btny"><a href="">MEH</a></div>
           <div class="btny"><a href="">CHAT</a></div>
         </div>
         
     </div>
     </div>
 {%endfor%}
-    </div>
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
          <div class="spacer"></div>

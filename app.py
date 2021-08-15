@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
+cnx = mysql.connector.connect(user='root', password='15w60ps',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -89,8 +89,9 @@ def index():
 @app.route('/listing', methods=['GET', 'POST'])
 def listing():
     if user.LoggedIn:
+        pictures = ['Profile_pic1.jpg','Profile_pic2.jpg','Profile_pic3.jpg','Profile_pic4.jpg','Profile_pic5.jpg','Profile_pic6.jpg']
         cursor.execute('select * from profiles;')
-        data = cursor.fetchall()
+        data1 = cursor.fetchall()
         cursor.execute(
             'select type_of_art from profiles group by type_of_art;')
         options = cursor.fetchall()
@@ -98,8 +99,16 @@ def listing():
             print(request.form)
             cursor.execute(
                 "select * from profiles where type_of_art ='{}';".format(request.form['type']))
-            data = cursor.fetchall()
-            print(data)
+            data1 = cursor.fetchall()
+        data = []
+        for i in data1:
+            data.append(list(i))
+        for i in range(len(data)):
+            j = i
+            while j > 5:
+                j-=5
+            data[i].append(pictures[j])
+
         return render_template('listing.html', data=data, options=options)
     else:
         return render_template('login.html', msg='Login to your account')
