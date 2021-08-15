@@ -45,12 +45,10 @@
             </ul>
         </div>
         <div class="grid-container">
-        {%  pictures = ['Profile_pic1.jpg','Profile_pic2.jpg','Profile_pic2.jpg','Profile_pic3.jpg','Profile_pic4.jpg','Profile_pic5.jpg','Profile_pic6.jpg']   %}]
-
-        {% for profile in data %} 
-         <div class="cardy">
-      <img src="{{ url_for('static', filename='Profile_pic1.jpg') }}" alt="" class="image" />
-      <div class="content">
+{% for profile in data %}
+        <div class="cardy">
+        <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image">
+        <div class="content">
         <h4>{{data[i][1]}}</h4>
         <h5>{{data[i][2]}}</h5>
         <p>
