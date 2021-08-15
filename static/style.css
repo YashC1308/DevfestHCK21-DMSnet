@@ -24,6 +24,35 @@ header .logo {
 .nav_links {
   list-style: none;
 }
+.chat-container {
+  display: grid;
+  margin-left: 30%;
+  align-content: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  background-color: #ffffff00;
+  height: auto;
+  padding: 10px;
+  width: 50%;
+  z-index: 4;
+}
+.conty {
+  border: 2px solid #dedede00;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+.conty img {
+  border-radius: 50%;
+  width: 75px;
+}
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+  align-self: left;
+}
+
 .cardy {
   width: 18rem;
   background: rgba(255, 255, 255, 0.822);

@@ -35,41 +35,21 @@
             </form></li>
             </ul>
         </header>
-        <div class="overlay"></div>
-        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-        <div class="sidebar">
-            <div class="spacer"></div>
-            <ul>
-                <li><a href="{{url_for('CreateContract') }}">Place Order</a></li>
-                <li><a href="{{url_for('listing') }}">Search</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
 
-        </div>
-
-        <div class="grid-container">
- {% for profile in data %} 
-         <div class="cardy">
-      <img src="{{ url_for('static', filename='img2.jpg') }}" alt="" class="image" />
-      <div class="content">
-        <h4>{{profile[1]}}</h4>
-        <h5>{{profile[2]}}</h5>
-        <p>
-          {{profile[3]}} 
-        </p>
-        <div class="link">
-        <div class="btny"><a href="">MEH</a></div>
-          <div class="btny"><a href="">CHAT</a></div>
-        </div>
-        
+    <div class="chat-container">
+    <div class="conty">
+    <img src="av1.png" alt="Avatar" >
+    <p>Hello. How are you today?</p>
+    <span class="time-right">11:00</span>
     </div>
-    </div>
-{%endfor%}
-
-
-
+    <div class="conty darker">
+    <img src="av2.png" alt="Avatar" >
+    <p>Hey! I'm fine. Thanks for asking!</p>
+    <span class="time-left">11:01</span>
     </div>
 
+    </div>
+    
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="sidebar">

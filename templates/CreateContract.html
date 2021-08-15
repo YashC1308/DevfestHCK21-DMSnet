@@ -1,53 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order</title>
-    <link rel='stylesheet'href="{{ url_for('static', filename='style.css') }}" >
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
     <section class="showcase">
-        <header>
-            <h2 class ="logo">DMS-Net</h2>
-            <ul class="nav_links">
-                <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
-                <li><a href="#" title="">My Profile</a></li>
-                <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
-            </ul>
-        </header>
-        <div class="overlay"></div>
-        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-        <div class="sidebar">
-            <div class="spacer"></div>
-            <ul>
-                <li><a href="{{url_for('CreateContract') }}">Place Order</a></li>
-                <li><a href="{{url_for('listing') }}">Search</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
-        </div>
-        <div class="overlay"></div>
-        <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
-    <div class="container-order">
-        <div class='myform-order'>
-            <form action="{{ url_for('CreateContract') }}" method="POST" id='form1'>
-                <h2>Place an Order </h2>
-                <h3>{{msg}}</h3>
+      <header>
+        <h2 class="logo">DMS-Net</h2>
+        <ul class="nav_links">
+          <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
+          <li><a href="#" title="">My Profile</a></li>
+          <li><a href="{{url_for('logout') }}" title="">Logout</a></li>
+        </ul>
+      </header>
+      <div class="overlay"></div>
+      <video
+        src="{{ url_for('static', filename='BGVID.mp4') }}"
+        muted
+        loop
+        autoplay
+      ></video>
+      <div class="sidebar">
+        <div class="spacer"></div>
+        <ul>
+          <li><a href='CreateContract/" "'>Place Order</a></li>
+          <li><a href="{{url_for('listing') }}">Search</a></li>
+          <li><a href="#">Chat</a></li>
+        </ul>
+      </div>
+      <div class="overlay"></div>
+      <video
+        src="{{ url_for('static', filename='BGVID.mp4') }}"
+        muted
+        loop
+        autoplay
+      ></video>
+      <div class="container-order">
+        <div class="myform-order">
+          <form
+            action="{{ url_for('CreateContract',id=0) }}"
+            method="POST"
+            id="form1"
+          >
+            <h2>Place an Order</h2>
+            <h3>{{msg}}</h3>
 
-                <input type='text' placeholder="Creator ID" id = 'creator_Id'   name = 'creator_Id'>
-                <input type='text' placeholder="Your Order" id = 'order' name = 'order'>
-                 <input type='text' placeholder="Price Qouted" id = 'price' name = 'price'>
-                <input type='password' placeholder='Your Password to Authorise' id = 'password' name = 'password'>
-                <button type='submit'>Place Order</button>
-
-            </form>
+            <input
+              type="text"
+              placeholder="Creator ID"
+              id="creator_Id"
+              value="{{values[0]}}"
+              name="creator_Id"
+            />
+            <input
+              type="text"
+              placeholder="Your Order"
+              id="order"
+              name="order"
+            />
+            <input
+              type="text"
+              placeholder="Price Qouted"
+              id="price"
+              name="price"
+            />
+            <input
+              type="password"
+              placeholder="Your Password to Authorise"
+              id="password"
+              name="password"
+            />
+            <button type="submit">Place Order</button>
+          </form>
         </div>
         <div class="image-order">
-            <img src="{{ url_for('static', filename='Login.gif') }}" width=400px>
+          <img
+            src="{{ url_for('static', filename='Login.gif') }}"
+            width="400px"
+          />
         </div>
-    </div>
+      </div>
     </section>
-    
-</body>
+  </body>
 </html>
