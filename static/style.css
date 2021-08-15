@@ -39,7 +39,6 @@ header .logo {
 .search-grid {
   display: grid;
   grid-template-rows: 50px auto;
-  margin-left: 10%;
 
   row-gap: 1px;
   column-gap: 1px;
@@ -124,7 +123,7 @@ header .logo {
 .grid-container {
   display: grid;
   width: auto;
-  margin-left: 10%;
+  margin-left: 20%;
   margin-top: 40px;
   align-content: center;
   grid-template-columns: auto auto auto;
@@ -153,7 +152,7 @@ a {
   font-size: 16px;
 }
 .search {
-  margin-left: 10%;
+  margin-left: 20%;
   margin-bottom: 80%;
   z-index: 5;
 }
@@ -567,13 +566,14 @@ div.sidebar a:hover {
 
 div.dashboard {
   position: absolute;
-  margin-left: 10%;
+  margin-left: 25%;
+  margin-top: 2%;
   top: 22%;
-  left: 40%;
+  left: 26%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: right;
   background-color: rgba(255, 255, 255, 0.795);
   padding: 40px;
   padding-left: 50px;
