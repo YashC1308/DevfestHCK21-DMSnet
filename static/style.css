@@ -42,16 +42,13 @@ header .logo {
 }
 .grid-container-edit {
   display: grid;
-  margin-left: 5%;
-  margin-top: 0px;
+  margin-left: 40%;
   align-content: center;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto;
   grid-template-rows: auto;
   background-color: #ffffff00;
-  column-gap: 80px;
-  row-gap: 50px;
   height: auto;
-  padding: 100px;
+  padding: 10px;
   z-index: 4;
 }
 .form-aes {
