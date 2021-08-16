@@ -15,23 +15,22 @@
             <h2 class ="logo">DMS-Net</h2>
             <ul class="nav_links">
                 <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
-                <li><a href="#" title="">My Profile</a></li>
+                <li><a href="{{url_for('profile') }}" title="">My Profile</a></li>
                 <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
             </ul>
         </header>
-
-    </div>
     
         <div class="overlay"></div>
         <video src="{{ url_for('static', filename='BGVID.mp4') }}" muted loop autoplay></video>
         <div class="sidebar">
             <div class="spacer"></div>
             <ul>
+                <li><h4>Hello, {{type}}</h4></li>
                 <li><a href = '/CreateContract/" "'>Place Order</a></li>
                 <li><a href="{{url_for('listing') }}">Search</a></li>
                 <li><a href="{{url_for('chat') }}">Chat</a></li>
             </ul>
-
+        </div>
     </section>
 
 <div id="chatbox" style= "margin-left:30%; height:500px; overflow-y: scroll;">
