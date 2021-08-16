@@ -7,6 +7,7 @@ import json
 import re
 from datetime import date
 from Account import User
+import time
 '''
 THE MYSQL DATABASE = dims
 Table = Contract
@@ -308,11 +309,13 @@ def chat(rid="2"):
     # get nm from html
     sender = "1"
     receiver = rid
-    message = request.form["statement"]
+    chat = recmsg(sender, receiver)
+    message = "I would like to place an order"
+    time.sleep(1)
     print(message)
     cursor.execute("INSERT INTO dims.chat_message (to_user_id, from_user_id, chat_message, status) VALUES ('{}','{}','{}','1');".format(sender, receiver, message))
     cnx.commit()
-    chat = recmsg(sender, receiver)
+    
     print(chat)
     return render_template("chat.html", chat=chat)
 
