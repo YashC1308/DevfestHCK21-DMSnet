@@ -13,9 +13,9 @@
         <header>
             <h2 class ="logo">DMS-Net</h2>
             <ul class="nav_links">
-                <li><a href="#" title="">Dashboard</a></li>
+                <li><a href="{{url_for('dashboard') }}" title="">Dashboard</a></li>
                 <li><a href="{{url_for('profile') }}" title="">My Profile</a></li>
-                <li><a href="#"  title="">Logout</a></li>
+                <li><a href="{{url_for('logout') }}"  title="">Logout</a></li>
             </ul>
         </header>
 
@@ -25,9 +25,9 @@
             <div class="spacer"></div>
             <ul >
                 <li><h4>Hello,Creator</h4></li>
-                <li><a href = "#">Place Order</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Chat</a></li>
+                <li><a href = '/CreateContract/" "'>Place Order</a></li>
+                <li><a href="{{url_for('listing') }}">Search</a></li>
+                <li><a href="{{url_for('chat') }}">Chat</a></li>
             </ul>
         </div>
         <div class="container-profile">
