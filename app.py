@@ -35,7 +35,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='attendance@123',
+cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -301,7 +301,6 @@ def recmsg(sender, receiver):
             tar[1] = i[0]
         chat.append(tar)
     return chat
-    
 
 
 @app.route('/chat', methods=['GET', 'POST'])
@@ -313,9 +312,10 @@ def chat(rid="2"):
     message = "I would like to place an order"
     time.sleep(1)
     print(message)
-    cursor.execute("INSERT INTO dims.chat_message (to_user_id, from_user_id, chat_message, status) VALUES ('{}','{}','{}','1');".format(sender, receiver, message))
+    cursor.execute("INSERT INTO dims.chat_message (to_user_id, from_user_id, chat_message, status) VALUES ('{}','{}','{}','1');".format(
+        sender, receiver, message))
     cnx.commit()
-    
+
     print(chat)
     return render_template("chat.html", chat=chat)
 
