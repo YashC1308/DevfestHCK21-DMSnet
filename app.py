@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
+cnx = mysql.connector.connect(user='root', password='15w60ps',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -243,10 +243,10 @@ def profile():
 def sign_up():
 
     msg = 'Please Fill up the Form'
-    print(request.form)
 
-    if request.method == 'POST' and 'password' in request.form and 'username' in request.form and 'email' in request.form and (request.form['type'] == 'creator' or request.form['type'] == 'customer'):
 
+    if request.method == 'POST' and 'password' in request.form and 'username' in request.form and 'email' in request.form and (request.form['type'] == 'Creator' or request.form['type'] == 'Customer'):
+        print(request.form)
         password = request.form['password']
         username = request.form['username']
         password2 = request.form['password2']
