@@ -30,7 +30,7 @@ CREATE TABLE `chat_message` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int NOT NULL,
   PRIMARY KEY (`chat_message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,6 @@ CREATE TABLE `chat_message` (
 
 LOCK TABLES `chat_message` WRITE;
 /*!40000 ALTER TABLE `chat_message` DISABLE KEYS */;
-INSERT INTO `chat_message` VALUES (1,1,2,'huh','2021-08-15 16:16:38',1),(2,2,1,'meh','2021-08-15 16:16:38',1);
 /*!40000 ALTER TABLE `chat_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-15 23:46:12
+-- Dump completed on 2021-08-16 15:53:55
