@@ -34,7 +34,7 @@ app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-cnx = mysql.connector.connect(user='root', password='Kuchnahi#00',
+cnx = mysql.connector.connect(user='root', password='15w60ps',
                               host='localhost',
                               database='dims')
 cursor = cnx.cursor()
@@ -67,6 +67,9 @@ def Load_Dashboard(party1_Id):
         data.append(temp)
     print(data)
     return data
+
+
+
 
 
 @app.route('/MakeContract', methods=['GET', 'POST'])
@@ -234,7 +237,7 @@ def profile():
         cursor.execute(
             'select type_of_art from profiles group by type_of_art;')
         options = cursor.fetchall()
-        return render_template('profile.html', profile=data, options=options)
+        return render_template('profile_page.html', profile=data, options=options)
     else:
         return render_template('login.html', msg='Login here')
 
