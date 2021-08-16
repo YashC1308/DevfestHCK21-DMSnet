@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: dims
+-- Host: localhost    Database: dims
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `chat_message` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int NOT NULL,
   PRIMARY KEY (`chat_message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `chat_message` (
 
 LOCK TABLES `chat_message` WRITE;
 /*!40000 ALTER TABLE `chat_message` DISABLE KEYS */;
+INSERT INTO `chat_message` VALUES (43,1,2,'I would like to place an order','2021-08-16 11:19:54',1),(44,1,2,'I would like to place an order','2021-08-16 11:20:05',1),(45,1,2,'I would like to place an order','2021-08-16 11:31:11',1);
 /*!40000 ALTER TABLE `chat_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +60,7 @@ CREATE TABLE `contract` (
   `party2_accepted` int DEFAULT NULL,
   `date` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +69,7 @@ CREATE TABLE `contract` (
 
 LOCK TABLES `contract` WRITE;
 /*!40000 ALTER TABLE `contract` DISABLE KEYS */;
-INSERT INTO `contract` VALUES (1,36,42,'10 timber','30 rps',0,0,'2021-08-13'),(2,36,56,'10 stone','400 rps',0,0,'2021-08-13'),(3,56,42,'40 gld','30 rps',0,0,'2021-08-13'),(4,36,47,'40 towels','400 rps',0,0,'2021-08-13'),(5,1,45,'100 rupees','Naruto Fanart',0,0,'2021-08-15'),(6,1,67,'10','hankie',0,0,'2021-08-15'),(7,1,45,'80 rupees','naruto state',0,0,'2021-08-15');
+INSERT INTO `contract` VALUES (1,36,42,'10 timber','30 rps',0,0,'2021-08-13'),(2,36,56,'10 stone','400 rps',0,0,'2021-08-13'),(3,56,42,'40 gld','30 rps',0,0,'2021-08-13'),(4,36,47,'40 towels','400 rps',0,0,'2021-08-13'),(5,1,45,'100 rupees','Naruto Fanart',0,0,'2021-08-15'),(6,1,67,'10','hankie',0,0,'2021-08-15'),(7,1,45,'80 rupees','naruto state',0,0,'2021-08-15'),(8,4,1,'500rps','20 bannanas',1,0,'2021-08-16');
 /*!40000 ALTER TABLE `contract` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +86,7 @@ CREATE TABLE `login` (
   `password` varchar(15) DEFAULT NULL,
   `type` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +95,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'Amogh','lol','creator'),(2,'yash','lol','customer'),(3,'Customer1','lol','customer');
+INSERT INTO `login` VALUES (1,'Amogh','lol','creator'),(2,'yash','lol','customer'),(3,'Customer1','lol','customer'),(4,'test','lol','Creator');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +161,7 @@ CREATE TABLE `profiles` (
   `type_of_art` varchar(1000) NOT NULL,
   `description` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +170,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'Amogh','Digital Art','hI there I make art using adobe software Suite'),(2,'Norman','Sculpturest','hI there I carve wooden sculptures'),(3,'Sal','Painter','hI there I make art using paintbrushes'),(4,'Nims','Sculptor','hI there I carve wooden sculptures'),(5,'Yash','Painter','hI there I make art using paintbrushes'),(6,'Sidak','Sculptor','hI there I carve wooden sculptures');
+INSERT INTO `profiles` VALUES (1,'Amogh','Digital Art','hI there I make art using adobe software Suite'),(2,'Norman','Sculpturest','hI there I carve wooden sculptures'),(3,'Sal','Painter','hI there I make art using paintbrushes'),(4,'Nims','Sculptor','hI there I carve wooden sculptures'),(5,'Yash','Painter','hI there I make art using paintbrushes'),(6,'Sidak','Sculptor','hI there I carve wooden sculptures'),(7,'test','default','default');
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -182,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-16 15:53:55
+-- Dump completed on 2021-08-16 17:25:08
